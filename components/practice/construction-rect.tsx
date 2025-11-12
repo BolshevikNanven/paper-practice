@@ -1,15 +1,37 @@
 'use client'
 
+import { cn } from '@/lib/utils'
+import { ClassValue } from 'clsx'
 import { useRef } from 'react'
 
+export interface Rect {
+    id: string
+    x: number
+    y: number
+    w: number
+    h: number
+}
+
 interface Props {
-    rect: { x: number; y: number; w: number; h: number }
-    onChange: (newRect: { x: number; y: number; w: number; h: number }) => void
+    rect: Rect
+    className?: ClassValue
     parentElement: React.RefObject<HTMLDivElement | null>
+    onChange: (newRect: Rect) => void
+    onClick?: () => void
     onStartDrag?: () => void
     onEndDrag?: () => void
+    children?: React.ReactNode
 }
-export function ConstructionRect({ rect, onChange, parentElement, onStartDrag, onEndDrag }: Props) {
+export function ConstructionRect({
+    rect,
+    className,
+    parentElement,
+    onChange,
+    onClick,
+    onStartDrag,
+    onEndDrag,
+    children,
+}: Props) {
     const dragStart = useRef<{ x: number; y: number; offsetX: number; offsetY: number } | null>(null)
     const resizeStart = useRef<{ x: number; y: number; w: number; h: number; dir: string } | null>(null)
 
@@ -19,6 +41,7 @@ export function ConstructionRect({ rect, onChange, parentElement, onStartDrag, o
 
     function handleMouseDown(e: React.MouseEvent) {
         e.stopPropagation()
+        e.preventDefault()
         dragStart.current = {
             x: e.clientX,
             y: e.clientY,
@@ -118,15 +141,15 @@ export function ConstructionRect({ rect, onChange, parentElement, onStartDrag, o
 
     return (
         <div
-            className='absolute border-2 border-main bg-main/10'
+            className={cn('absolute cursor-pointer border-2 border-main bg-main/10', className)}
             style={{
                 left: rect.x,
                 top: rect.y,
                 width: rect.w,
                 height: rect.h,
-                cursor: 'move',
             }}
             onMouseDown={handleMouseDown}
+            onClick={onClick}
         >
             {/* 右下角拉手 */}
             <div
@@ -138,6 +161,7 @@ export function ConstructionRect({ rect, onChange, parentElement, onStartDrag, o
                 className='absolute -top-1.5 -left-1.5 h-3 w-3 cursor-nwse-resize hover:border-2 hover:border-main hover:bg-card'
                 onMouseDown={e => handleResizeMouseDown(e, 'nw')}
             />
+            {children}
         </div>
     )
 }

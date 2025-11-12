@@ -1,19 +1,29 @@
 'use client'
 
-import { CropIcon, RobotIcon, UploadSimpleIcon } from '@phosphor-icons/react'
+import { CropIcon, RobotIcon, TrashIcon, UploadSimpleIcon } from '@phosphor-icons/react'
 import { Button } from '../common/button'
 import { ButtonGroup } from '../common/button-group'
 import React, { useRef, useState } from 'react'
 import { ConstructionHeader } from './construction-header'
-import { ConstructionRect } from './construction-rect'
+import { ConstructionRect, Rect } from './construction-rect'
+import { usePracticeStore } from '@/store/practice'
+import { nanoid } from 'nanoid'
+import { cn } from '@/lib/utils'
 
-export function ConstructionCreator() {
+interface Props {
+    selectedChunk?: string
+    onSelect?: (id: string) => void
+}
+export function ConstructionCreator({ selectedChunk, onSelect }: Props) {
     const [isCropping, setIsCropping] = useState(false)
-    const [cropRects, setCropRects] = useState<{ x: number; y: number; w: number; h: number }[]>([])
-    const [currentRect, setCurrentRect] = useState<{ x: number; y: number; w: number; h: number } | null>(null)
+    const [cropRects, setCropRects] = useState<Rect[]>([])
+    const [currentRect, setCurrentRect] = useState<Rect | null>(null)
     const [isDragging, setIsDragging] = useState(false)
     const startPoint = useRef<{ x: number; y: number } | null>(null)
     const containerRef = useRef<HTMLDivElement>(null)
+
+    const chunks = usePracticeStore(s => s.constructingChunks)
+    const { setConstructionChunks } = usePracticeStore(s => s.actions)
 
     function handleSwitchCrop() {
         setIsCropping(!isCropping)
@@ -30,7 +40,7 @@ export function ConstructionCreator() {
         const x = e.clientX - rect.left
         const y = e.clientY - rect.top
         startPoint.current = { x, y }
-        setCurrentRect({ x, y, w: 0, h: 0 })
+        setCurrentRect({ id: nanoid(), x, y, w: 0, h: 0 })
     }
 
     function handleMouseMove(e: React.MouseEvent) {
@@ -41,12 +51,13 @@ export function ConstructionCreator() {
         const y = e.clientY - rect.top
         const sx = startPoint.current.x
         const sy = startPoint.current.y
-        setCurrentRect({
+        setCurrentRect(prev => ({
+            id: prev!.id,
             x: Math.min(sx, x),
             y: Math.min(sy, y),
             w: Math.abs(x - sx),
             h: Math.abs(y - sy),
-        })
+        }))
     }
 
     function handleMouseUp() {
@@ -55,12 +66,30 @@ export function ConstructionCreator() {
         startPoint.current = null
         if (currentRect.w > 0 && currentRect.h > 0) {
             setCropRects(prev => [...prev, currentRect])
+            setConstructionChunks([
+                ...chunks,
+                {
+                    id: currentRect.id,
+                    subjects: [],
+                    source: '',
+                },
+            ])
         }
         setCurrentRect(null)
     }
 
-    function handleRectChange(idx: number, newRect: { x: number; y: number; w: number; h: number }) {
+    function handleRectChange(idx: number, newRect: Rect) {
         setCropRects(rects => rects.map((r, i) => (i === idx ? newRect : r)))
+    }
+
+    function handleDeleteRect(e: React.MouseEvent<HTMLButtonElement>, id: string) {
+        e.stopPropagation()
+        e.preventDefault()
+
+        setCropRects(rects => rects.filter(r => r.id !== id))
+        if (selectedChunk === id) {
+            setConstructionChunks(chunks.filter(chunk => chunk.id !== id))
+        }
     }
 
     return (
@@ -99,10 +128,26 @@ export function ConstructionCreator() {
                     {cropRects.map((rect, idx) => (
                         <ConstructionRect
                             key={idx}
+                            className={cn(
+                                'group transition-colors hover:bg-main/30',
+                                selectedChunk === rect.id && ' bg-main/30',
+                            )}
                             parentElement={containerRef}
                             rect={rect}
                             onChange={newRect => handleRectChange(idx, newRect)}
-                        />
+                            onClick={() => onSelect?.(rect.id)}
+                        >
+                            <div className='absolute right-2 bottom-2 hidden group-hover:flex'>
+                                <Button
+                                    className='text-destructive'
+                                    size='sm'
+                                    variant='icon'
+                                    onClick={e => handleDeleteRect(e, rect.id)}
+                                >
+                                    <TrashIcon size={18} />
+                                </Button>
+                            </div>
+                        </ConstructionRect>
                     ))}
                     {isCropping && <div className='absolute inset-0 cursor-cell bg-black/20'></div>}
                     {/* 渲染当前正在框选的选框 */}

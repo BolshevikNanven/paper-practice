@@ -5,10 +5,10 @@ import { cn } from '@/lib/utils'
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode
     variant?: 'icon' | 'ghost' | 'primary' | 'default'
+    size?: 'md' | 'sm'
     disabled?: boolean
 }
-export function Button({ variant, disabled, className, children, ...props }: Props) {
-    
+export function Button({ variant, size, disabled, className, children, ...props }: Props) {
     return (
         <button
             className={cn(
@@ -20,6 +20,10 @@ export function Button({ variant, disabled, className, children, ...props }: Pro
                 },
                 {
                     'cursor-not-allowed bg-accent text-accent-foreground/40 hover:bg-accent active:scale-100': disabled,
+                },
+                {
+                    'h-8': size === 'sm',
+                    'w-8': size === 'sm' && variant === 'icon',
                 },
                 className,
             )}

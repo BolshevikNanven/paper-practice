@@ -3,18 +3,9 @@
 import { PracticeNode, PracticeOverviewItem } from './overview-item'
 import { useMemo } from 'react'
 import { MovableDivider } from '../common/movable-divider'
-import { usePracticeStore } from '@/store/practice'
+import { OverviewData, usePracticeStore } from '@/store/practice'
 
-const overviewData = [
-    {
-        title: '数列敛散性的判定',
-        children: [{ title: '子目录1' }, { title: '子目录2', children: [{ title: '科目2' }] }],
-    },
-    { title: '极限存在性' },
-    { title: '函数连续性', children: [{ title: '科目1' }] },
-]
-
-function flattenTree(nodes: typeof overviewData, deep = 0) {
+function flattenTree(nodes: Array<OverviewData>, deep = 0) {
     let result: Array<PracticeNode> = []
     for (const node of nodes) {
         result.push({ ...node, deep })
@@ -27,23 +18,22 @@ function flattenTree(nodes: typeof overviewData, deep = 0) {
 
 export function PracticeOverview() {
     const selectedSubject = usePracticeStore(s => s.selectingSubject)
+    const overviewData = usePracticeStore(s => s.overviewData)
 
-    const flatNodes = useMemo(() => flattenTree(overviewData), [])
+    const flatNodes = useMemo(() => {
+        if (!overviewData) {
+            return []
+        }
+        return flattenTree(overviewData)
+    }, [overviewData])
 
     return (
         <>
             <div className='relative flex h-full w-[286px] shrink-0 flex-col overflow-auto px-4'>
-                <h3 className='sticky top-0 left-0 mb-2 flex h-10 shrink-0 items-center bg-zinc-50 px-2 font-semibold'>
-                    目录
-                </h3>
-                <div className='h-px bg-border mb-2'></div>
+                <h3 className='sticky top-0 left-0 mb-2 flex h-10 shrink-0 items-center bg-zinc-50 px-2 font-semibold'>目录</h3>
+                <div className='mb-2 h-px bg-border'></div>
                 {flatNodes.map((node, idx) => (
-                    <PracticeOverviewItem
-                        key={idx}
-                        node={node}
-                        deep={node.deep}
-                        active={selectedSubject === node.title}
-                    />
+                    <PracticeOverviewItem key={idx} node={node} deep={node.deep} active={selectedSubject === node.title} />
                 ))}
             </div>
             <MovableDivider />

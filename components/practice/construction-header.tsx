@@ -6,7 +6,7 @@ import { usePracticeStore } from '@/store/practice'
 
 interface Props {
     title: string
-    children: React.ReactNode
+    children?: React.ReactNode
 }
 export function ConstructionHeader({ title, children }: Props) {
     const { switchConstruction } = usePracticeStore(s => s.actions)

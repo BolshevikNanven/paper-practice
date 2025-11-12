@@ -10,9 +10,22 @@ function getMockData(): PracticeData[] {
             id: `chunk-${j + 1}`,
             subjects: [`科目${Math.floor(Math.random() * 10)}`],
             source: '/test-practice.png',
+            answer: {
+                type: 'text',
+                value: '答案',
+            },
         })),
     }))
 }
+
+const mockOverviewData = [
+    {
+        title: '数列敛散性的判定',
+        children: [{ title: '子目录1' }, { title: '子目录2', children: [{ title: '科目2' }] }],
+    },
+    { title: '极限存在性' },
+    { title: '函数连续性', children: [{ title: '科目1' }] },
+]
 
 export interface PracticeData {
     id: string
@@ -24,18 +37,30 @@ export interface ChunkData {
     id: string
     subjects: Array<string>
     source: string
+    answer?: {
+        type: 'pic' | 'text'
+        value: string
+    }
+}
+
+export interface OverviewData {
+    title: string
+    children?: Array<OverviewData>
 }
 
 interface Store {
     editing: boolean
     constructing: boolean | string
+    constructingChunks: Array<ChunkData>
     selectingSubject?: string
+    overviewData: Array<OverviewData> | null
     playgroundOpened: boolean
     playgroundChunks: Array<ChunkData>
     data: Array<PracticeData>
     actions: {
         switchEditMode: (state?: boolean) => void
         switchConstruction: (item: Store['constructing']) => void
+        setConstructionChunks: (item: Array<ChunkData>) => void
         openPlayground: (params: {
             type: 'random' | 'practice' | 'subject' | 'chunk'
             practice?: string
@@ -49,8 +74,10 @@ interface Store {
 const initial = {
     editing: false,
     constructing: false,
+    constructingChunks: [],
     playgroundOpened: false,
     playgroundChunks: [],
+    overviewData: mockOverviewData,
     subjectSelected: undefined,
     data: getMockData(),
 }
@@ -64,7 +91,10 @@ export const usePracticeStore = create<Store>()((set, get) => ({
             })
         },
         switchConstruction(item) {
-            set({ constructing: item })
+            set({ constructing: item, constructingChunks: [] })
+        },
+        setConstructionChunks(item) {
+            set({ constructingChunks: item })
         },
         openPlayground(params) {
             const chunks: Array<ChunkData> = []
