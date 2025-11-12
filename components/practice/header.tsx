@@ -1,14 +1,28 @@
 'use client'
 
-import { HouseSimpleIcon, ListIcon, PlayIcon, ShuffleAngularIcon, UserIcon, WrenchIcon } from '@phosphor-icons/react'
+import { HouseSimpleIcon, ListIcon, PlayIcon, PlusIcon, ShuffleAngularIcon, UserIcon, WrenchIcon } from '@phosphor-icons/react'
 import { Button } from '../common/button'
-import { useStore } from '@/store'
+import { useRouter } from 'next/navigation'
+import { usePracticeStore } from '@/store/practice'
 
 export function PracticeHeader() {
-    const selectedSubject = useStore(state => state.practiceSubjectSelected)
-    const isEditing = useStore(state => state.practiceEditing)
+    const selectedSubject = usePracticeStore(s => s.selectingSubject)
+    const isEditing = usePracticeStore(s => s.editing)
+    const isConstructing = usePracticeStore(s => s.constructing)
 
-    const { switchEditMode } = useStore(state => state.practiceActions)
+    const router = useRouter()
+
+    const { switchEditMode, openPlayground, switchConstruction } = usePracticeStore(s => s.actions)
+
+    function handleStartSubject() {
+        if (selectedSubject) {
+            openPlayground({ type: 'subject' })
+        }
+    }
+
+    function handleStartRandom() {
+        openPlayground({ type: 'random' })
+    }
 
     return (
         <div className='flex items-center gap-4 p-4'>
@@ -16,7 +30,7 @@ export function PracticeHeader() {
                 <ListIcon size={18} />
             </Button>
             <div className='flex items-center'>
-                <Button variant='ghost'>
+                <Button variant='ghost' onClick={() => router.replace('/')}>
                     <HouseSimpleIcon size={18} />
                 </Button>
                 <span className='mr-2'>/</span>
@@ -25,15 +39,21 @@ export function PracticeHeader() {
             <span className='flex-1' />
             {!isEditing && (
                 <>
-                    <Button variant='primary' disabled={!selectedSubject}>
+                    <Button variant='primary' disabled={!selectedSubject} onClick={handleStartSubject}>
                         <PlayIcon size={18} weight='bold' />
                         开始专题
                     </Button>
-                    <Button>
+                    <Button onClick={handleStartRandom}>
                         <ShuffleAngularIcon size={18} />
                         随机刷题
                     </Button>
                 </>
+            )}
+            {isEditing && !isConstructing && (
+                <Button onClick={() => switchConstruction(true)}>
+                    <PlusIcon />
+                    创建资料
+                </Button>
             )}
             <Button variant={isEditing ? 'primary' : 'default'} onClick={() => switchEditMode()}>
                 <WrenchIcon size={18} />

@@ -1,21 +1,19 @@
 'use client'
 
-import Image from 'next/image'
 import { Dialog, DialogContent } from './playground-dialog'
 
-import testImg from '@/public/test-practice.png'
-import { useStore } from '@/store'
 import { ButtonGroup } from '../common/button-group'
 import { Button } from '../common/button'
 import { ExamIcon, MinusIcon, PlusIcon, StarIcon } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { ClassValue } from 'clsx'
 import { cn } from '@/lib/utils'
+import { usePracticeStore } from '@/store/practice'
 
 export function PracticePlayground() {
-    const isOpen = useStore(state => state.practicePlaygroundOpened)
-    const chunks = useStore(state => state.practicePlaygroundChunks)
-    const { closePlayground } = useStore(state => state.practiceActions)
+    const isOpen = usePracticeStore(s => s.playgroundOpened)
+    const chunks = usePracticeStore(s => s.playgroundChunks)
+    const { closePlayground } = usePracticeStore(s => s.actions)
 
     const [scaleRatio, setScaleRatio] = useState(50)
 

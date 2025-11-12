@@ -1,7 +1,6 @@
 'use client'
 
-import { useStore } from '@/store'
-import { PracticeData } from '@/store/practice'
+import { PracticeData, usePracticeStore } from '@/store/practice'
 import { cn } from '@/lib/utils'
 import { MouseEvent } from 'react'
 
@@ -9,9 +8,9 @@ interface Props {
     data: PracticeData
 }
 export function Practice({ data }: Props) {
-    const { openPlayground, switchConstruction } = useStore(state => state.practiceActions)
-    const selectedSubject = useStore(state => state.practiceSubjectSelected)
-    const editing = useStore(state => state.practiceEditing)
+    const { openPlayground, switchConstruction } = usePracticeStore(s => s.actions)
+    const selectedSubject = usePracticeStore(s => s.selectingSubject)
+    const editing = usePracticeStore(s => s.editing)
 
     function handleClickPractice() {
         if (editing) {

@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils'
-import { useStore } from '@/store'
+import { usePracticeStore } from '@/store/practice'
 
 export interface PracticeNode {
     title: string
@@ -14,7 +14,7 @@ interface Props {
 }
 
 export function PracticeOverviewItem({ node, deep = 0, active }: Props) {
-    const { selectSubject } = useStore(state => state.practiceActions)
+    const { selectSubject } = usePracticeStore(s => s.actions)
 
     function handleSelect() {
         selectSubject(active ? undefined : node.title)

@@ -1,7 +1,6 @@
-import { StateCreator } from 'zustand'
-import { Store } from '.'
+import { create } from 'zustand'
 
-function getMockPracticeData(): PracticeData[] {
+function getMockData(): PracticeData[] {
     return Array.from({ length: 10 }).map((_, i) => ({
         id: `practice-${i + 1}`,
         title: `模拟练习 ${i + 1}`,
@@ -27,20 +26,19 @@ export interface ChunkData {
     source: string
 }
 
-export interface PracticeSlice {
-    practiceEditing: boolean
-    practiceConstructing: boolean | string
-    practicePlaygroundOpened: boolean
-    practicePlaygroundChunks: Array<ChunkData>
-    practiceSubjectSelected?: string
-    practiceData: Array<PracticeData>
-    practiceActions: {
+interface Store {
+    editing: boolean
+    constructing: boolean | string
+    selectingSubject?: string
+    playgroundOpened: boolean
+    playgroundChunks: Array<ChunkData>
+    data: Array<PracticeData>
+    actions: {
         switchEditMode: (state?: boolean) => void
-        switchConstruction: (item: PracticeSlice['practiceConstructing']) => void
+        switchConstruction: (item: Store['constructing']) => void
         openPlayground: (params: {
             type: 'random' | 'practice' | 'subject' | 'chunk'
             practice?: string
-            subject?: string
             chunk?: string
         }) => void
         closePlayground: () => void
@@ -49,50 +47,73 @@ export interface PracticeSlice {
 }
 
 const initial = {
-    practiceEditing: false,
-    practiceConstructing: false,
-    practicePlaygroundOpened: false,
-    practicePlaygroundChunks: [],
-    practiceSubjectSelected: undefined,
-    practiceData: getMockPracticeData(),
+    editing: false,
+    constructing: false,
+    playgroundOpened: false,
+    playgroundChunks: [],
+    subjectSelected: undefined,
+    data: getMockData(),
 }
 
-export const createPracticeSlice: StateCreator<Store, [], [], PracticeSlice> = (set, get) => ({
+export const usePracticeStore = create<Store>()((set, get) => ({
     ...initial,
-    practiceActions: {
+    actions: {
         switchEditMode(state) {
             set({
-                practiceEditing: state || !get().practiceEditing,
+                editing: state || !get().editing,
             })
         },
         switchConstruction(item) {
-            set({ practiceConstructing: item })
+            set({ constructing: item })
         },
         openPlayground(params) {
             const chunks: Array<ChunkData> = []
 
             switch (params.type) {
                 case 'practice': {
-                    chunks.push(...(get().practiceData.find(it => it.id === params.practice)?.chunks || []))
-                    console.log(chunks)
-
+                    chunks.push(...(get().data.find(it => it.id === params.practice)?.chunks || []))
                     break
                 }
                 case 'chunk': {
                     const target = get()
-                        .practiceData.find(it => it.id === params.practice)
+                        .data.find(it => it.id === params.practice)
                         ?.chunks.find(it => it.id === params.chunk)
                     chunks.push(...(target ? [target] : []))
+                    break
+                }
+                case 'subject': {
+                    const selectedSubject = get().selectingSubject
+                    get().data.forEach(practice => {
+                        practice.chunks.forEach(chunk => {
+                            if (chunk.subjects.some(it => it === selectedSubject)) {
+                                chunks.push(chunk)
+                            }
+                        })
+                    })
+                    break
+                }
+                case 'random': {
+                    const allChunks: ChunkData[] = []
+                    get().data.forEach(practice => {
+                        allChunks.push(...practice.chunks)
+                    })
+                    // 洗牌算法打乱顺序
+                    for (let i = allChunks.length - 1; i > 0; i--) {
+                        const j = Math.floor(Math.random() * (i + 1))
+                        ;[allChunks[i], allChunks[j]] = [allChunks[j], allChunks[i]]
+                    }
+                    chunks.push(...allChunks.slice(0, 10))
+                    break
                 }
             }
 
-            set({ practicePlaygroundOpened: true, practicePlaygroundChunks: chunks })
+            set({ playgroundOpened: true, playgroundChunks: chunks })
         },
         closePlayground() {
-            set({ practicePlaygroundOpened: false })
+            set({ playgroundOpened: false })
         },
         selectSubject(subject) {
-            set({ practiceSubjectSelected: subject })
+            set({ selectingSubject: subject })
         },
     },
-})
+}))

@@ -1,14 +1,14 @@
 'use client'
 
-import { useStore } from '@/store'
 import { RailScroller } from '../common/rail-scroller'
 import { PracticePlayground } from './playground'
 import { Practice } from './practice'
 
 import { motion } from 'motion/react'
+import { usePracticeStore } from '@/store/practice'
 
 export function PracticeList() {
-    const data = useStore(s => s.practiceData)
+    const data = usePracticeStore(s => s.data)
 
     return (
         <>

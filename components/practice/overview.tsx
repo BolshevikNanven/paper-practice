@@ -2,8 +2,8 @@
 
 import { PracticeNode, PracticeOverviewItem } from './overview-item'
 import { useMemo } from 'react'
-import { useStore } from '@/store'
 import { MovableDivider } from '../common/movable-divider'
+import { usePracticeStore } from '@/store/practice'
 
 const overviewData = [
     {
@@ -26,7 +26,7 @@ function flattenTree(nodes: typeof overviewData, deep = 0) {
 }
 
 export function PracticeOverview() {
-    const selectedSubject = useStore(state => state.practiceSubjectSelected)
+    const selectedSubject = usePracticeStore(s => s.selectingSubject)
 
     const flatNodes = useMemo(() => flattenTree(overviewData), [])
 
@@ -34,7 +34,7 @@ export function PracticeOverview() {
         <>
             <div className='relative flex h-full w-[286px] shrink-0 flex-col overflow-auto px-4'>
                 <h3 className='sticky top-0 left-0 mb-2 flex h-10 shrink-0 items-center bg-zinc-50 px-2 font-semibold'>
-                    考点目录
+                    目录
                 </h3>
                 <div className='h-px bg-border mb-2'></div>
                 {flatNodes.map((node, idx) => (
