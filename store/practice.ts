@@ -51,7 +51,6 @@ export interface OverviewData {
 interface Store {
     editing: boolean
     constructing: boolean | string
-    constructingChunks: Array<ChunkData>
     selectingSubject?: string
     overviewData: Array<OverviewData> | null
     playgroundOpened: boolean
@@ -60,7 +59,6 @@ interface Store {
     actions: {
         switchEditMode: (state?: boolean) => void
         switchConstruction: (item: Store['constructing']) => void
-        setConstructionChunks: (item: Array<ChunkData>) => void
         openPlayground: (params: {
             type: 'random' | 'practice' | 'subject' | 'chunk'
             practice?: string
@@ -68,6 +66,7 @@ interface Store {
         }) => void
         closePlayground: () => void
         selectSubject: (subject?: string) => void
+        setOverviewData: (data: Array<OverviewData> | null) => void
     }
 }
 
@@ -88,13 +87,11 @@ export const usePracticeStore = create<Store>()((set, get) => ({
         switchEditMode(state) {
             set({
                 editing: state || !get().editing,
+                selectingSubject: undefined,
             })
         },
         switchConstruction(item) {
-            set({ constructing: item, constructingChunks: [] })
-        },
-        setConstructionChunks(item) {
-            set({ constructingChunks: item })
+            set({ constructing: item })
         },
         openPlayground(params) {
             const chunks: Array<ChunkData> = []
@@ -144,6 +141,9 @@ export const usePracticeStore = create<Store>()((set, get) => ({
         },
         selectSubject(subject) {
             set({ selectingSubject: subject })
+        },
+        setOverviewData(data) {
+            set({ overviewData: data })
         },
     },
 }))

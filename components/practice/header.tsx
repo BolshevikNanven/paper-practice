@@ -30,7 +30,7 @@ export function PracticeHeader() {
                 <ListIcon size={18} />
             </Button>
             <div className='flex items-center'>
-                <Button variant='ghost' onClick={() => router.replace('/')}>
+                <Button variant='ghost' onClick={() => router.push('/')}>
                     <HouseSimpleIcon size={18} />
                 </Button>
                 <span className='mr-2'>/</span>
@@ -52,7 +52,7 @@ export function PracticeHeader() {
             {isEditing && !isConstructing && (
                 <Button onClick={() => switchConstruction(true)}>
                     <PlusIcon />
-                    创建资料
+                    新建资料
                 </Button>
             )}
             <Button variant={isEditing ? 'primary' : 'default'} onClick={() => switchEditMode()}>

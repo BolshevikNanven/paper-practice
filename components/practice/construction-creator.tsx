@@ -3,27 +3,29 @@
 import { CropIcon, RobotIcon, TrashIcon, UploadSimpleIcon } from '@phosphor-icons/react'
 import { Button } from '../common/button'
 import { ButtonGroup } from '../common/button-group'
-import React, { useRef, useState } from 'react'
+import React, { memo, useRef, useState } from 'react'
 import { ConstructionHeader } from './construction-header'
 import { ConstructionRect, Rect } from './construction-rect'
-import { usePracticeStore } from '@/store/practice'
+import { ChunkData } from '@/store/practice'
 import { nanoid } from 'nanoid'
 import { cn } from '@/lib/utils'
+import { UploadWrapper } from '../common/upload-wrapper'
 
 interface Props {
-    selectedChunk?: string
-    onSelect?: (id: string) => void
+    chunks: ChunkData[]
+    selectedChunk?: ChunkData
+    onSelect: (id: string) => void
+    onChange: (chunks: ChunkData[]) => void
 }
-export function ConstructionCreator({ selectedChunk, onSelect }: Props) {
+export default memo(function ConstructionCreator({ chunks, selectedChunk, onSelect, onChange }: Props) {
+    const [papers, setPapers] = useState<string[]>([])
+
     const [isCropping, setIsCropping] = useState(false)
     const [cropRects, setCropRects] = useState<Rect[]>([])
     const [currentRect, setCurrentRect] = useState<Rect | null>(null)
     const [isDragging, setIsDragging] = useState(false)
     const startPoint = useRef<{ x: number; y: number } | null>(null)
     const containerRef = useRef<HTMLDivElement>(null)
-
-    const chunks = usePracticeStore(s => s.constructingChunks)
-    const { setConstructionChunks } = usePracticeStore(s => s.actions)
 
     function handleSwitchCrop() {
         setIsCropping(!isCropping)
@@ -32,7 +34,7 @@ export function ConstructionCreator({ selectedChunk, onSelect }: Props) {
         startPoint.current = null
     }
 
-    function handleMouseDown(e: React.MouseEvent) {
+    function handleCropStart(e: React.MouseEvent) {
         if (!isCropping) return
         const rect = containerRef.current?.getBoundingClientRect()
         if (!rect) return
@@ -43,7 +45,7 @@ export function ConstructionCreator({ selectedChunk, onSelect }: Props) {
         setCurrentRect({ id: nanoid(), x, y, w: 0, h: 0 })
     }
 
-    function handleMouseMove(e: React.MouseEvent) {
+    function handleCropMove(e: React.MouseEvent) {
         if (!isCropping || !isDragging || !startPoint.current) return
         const rect = containerRef.current?.getBoundingClientRect()
         if (!rect) return
@@ -60,13 +62,13 @@ export function ConstructionCreator({ selectedChunk, onSelect }: Props) {
         }))
     }
 
-    function handleMouseUp() {
+    function handleCropDone() {
         if (!isCropping || !isDragging || !currentRect) return
         setIsDragging(false)
         startPoint.current = null
         if (currentRect.w > 0 && currentRect.h > 0) {
             setCropRects(prev => [...prev, currentRect])
-            setConstructionChunks([
+            onChange([
                 ...chunks,
                 {
                     id: currentRect.id,
@@ -87,9 +89,20 @@ export function ConstructionCreator({ selectedChunk, onSelect }: Props) {
         e.preventDefault()
 
         setCropRects(rects => rects.filter(r => r.id !== id))
-        if (selectedChunk === id) {
-            setConstructionChunks(chunks.filter(chunk => chunk.id !== id))
+        if (selectedChunk?.id === id) {
+            onSelect('')
         }
+        onChange(chunks.filter(chunk => chunk.id !== id))
+    }
+
+    function handleSelectPaper(files: FileList) {
+        const urls: string[] = []
+
+        for (const file of files) {
+            urls.push(URL.createObjectURL(file))
+        }
+
+        setPapers(prev => [...prev, ...urls])
     }
 
     return (
@@ -105,37 +118,38 @@ export function ConstructionCreator({ selectedChunk, onSelect }: Props) {
                         自动分片
                     </Button>
                 </ButtonGroup>
-                <Button>
-                    <UploadSimpleIcon size={18} />
-                    上传资料
-                </Button>
+                <UploadWrapper onFileSelect={handleSelectPaper} multiple>
+                    <Button>
+                        <UploadSimpleIcon size={18} />
+                        上传资料
+                    </Button>
+                </UploadWrapper>
             </ConstructionHeader>
             <div className='mr-2 flex-1 overflow-x-hidden overflow-y-auto pr-2 pb-12 pl-6 select-none'>
+                {papers.length === 0 && <div className='h-full w-full bg-card shadow-xl'></div>}
                 <div
                     className='relative bg-card shadow-xl'
                     ref={containerRef}
                     style={{ userSelect: isCropping ? 'none' : undefined }}
-                    onMouseDown={handleMouseDown}
-                    onMouseMove={handleMouseMove}
-                    onMouseUp={handleMouseUp}
+                    onMouseDown={handleCropStart}
+                    onMouseMove={handleCropMove}
+                    onMouseUp={handleCropDone}
                 >
-                    <img src='/test-practice.png' alt='' />
-                    <img src='/test-practice.png' alt='' />
-                    <img src='/test-practice.png' alt='' />
-                    <img src='/test-practice.png' alt='' />
-                    <img src='/test-practice.png' alt='' />
+                    {papers.map(url => (
+                        <img key={url} src={url} className='w-full' alt='paper' />
+                    ))}
                     {/* 渲染所有已选框 */}
                     {cropRects.map((rect, idx) => (
                         <ConstructionRect
                             key={idx}
                             className={cn(
                                 'group transition-colors hover:bg-main/30',
-                                selectedChunk === rect.id && ' bg-main/30',
+                                selectedChunk?.id === rect.id && 'bg-main/30',
                             )}
                             parentElement={containerRef}
                             rect={rect}
                             onChange={newRect => handleRectChange(idx, newRect)}
-                            onClick={() => onSelect?.(rect.id)}
+                            onClick={() => onSelect(rect.id)}
                         >
                             <div className='absolute right-2 bottom-2 hidden group-hover:flex'>
                                 <Button
@@ -166,4 +180,4 @@ export function ConstructionCreator({ selectedChunk, onSelect }: Props) {
             </div>
         </>
     )
-}
+})

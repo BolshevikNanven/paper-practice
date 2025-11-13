@@ -1,11 +1,13 @@
+import { ConfirmDialogProvider } from '@/components/common/confirm-dialog'
+
 export default function HomeLayout({
     children,
 }: Readonly<{
-    children: React.ReactNode;
-}>) { 
+    children: React.ReactNode
+}>) {
     return (
-        <div className="bg-zinc-50 w-screen h-screen overflow-hidden">
-            {children}
+        <div className='h-screen w-screen overflow-hidden bg-zinc-50'>
+            <ConfirmDialogProvider>{children}</ConfirmDialogProvider>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import { Dialog, DialogContent } from './playground-dialog'
 
 import { ButtonGroup } from '../common/button-group'
 import { Button } from '../common/button'
-import { ExamIcon, MinusIcon, PlusIcon, StarIcon } from '@phosphor-icons/react'
+import { ExamIcon, MinusIcon, PlusIcon, StarIcon, XIcon } from '@phosphor-icons/react'
 import { useState } from 'react'
 import { ClassValue } from 'clsx'
 import { cn } from '@/lib/utils'
@@ -16,6 +16,7 @@ export function PracticePlayground() {
     const { closePlayground } = usePracticeStore(s => s.actions)
 
     const [scaleRatio, setScaleRatio] = useState(50)
+    const [shownAnswers, setShownAnswers] = useState<string[]>([])
 
     function handleOpenChange(state: boolean) {
         if (state !== isOpen && !state) {
@@ -35,6 +36,25 @@ export function PracticePlayground() {
         }
     }
 
+    function switchAnswer(id: string) {
+        const answers: string[] = []
+        let has = false
+
+        shownAnswers.forEach(it => {
+            if (it !== id) {
+                answers.push(it)
+                return
+            }
+            has = true
+        })
+
+        if (!has) {
+            answers.push(id)
+        }
+
+        setShownAnswers(answers)
+    }
+
     return (
         <Dialog open={isOpen} onOpenChange={handleOpenChange}>
             <DialogContent className='flex flex-col items-center overflow-auto py-4'>
@@ -51,14 +71,14 @@ export function PracticePlayground() {
                         </ButtonGroup>
                     </div>
                 </header>
-                <main className='m-auto flex flex-col gap-8 pb-[40vh] pt-12' style={{ width: scaleRatio + '%' }}>
+                <main className='m-auto flex flex-col gap-8 pt-12 pb-[40vh]' style={{ width: scaleRatio + '%' }}>
                     {chunks.map(it => (
                         <div key={it.id} className='flex flex-col'>
-                            <img src={it.source} alt='practicing' className='rounded-sm rounded-br-none border' />
+                            <img src={it.source} alt='practicing' className='rounded-sm rounded-br-none border bg-card' />
                             <div className='relative ml-auto flex h-10 -translate-y-px'>
                                 <div className='absolute top-0 right-0 -z-10 h-full w-[calc(100%-16px)] rounded-br-xl border-r border-b bg-card' />
                                 <Mask className='absolute top-0 -left-9 -z-10' />
-                                <Button variant='ghost'>
+                                <Button variant='ghost' onClick={() => switchAnswer(it.id)}>
                                     <ExamIcon size={18} />
                                     详解
                                 </Button>
@@ -67,6 +87,24 @@ export function PracticePlayground() {
                                     收藏
                                 </Button>
                             </div>
+                            {shownAnswers.some(id => id === it.id) && (
+                                <div className='relative my-2 w-full rounded-sm rounded-tl-none border bg-card'>
+                                    <div className='absolute -top-10 -left-px flex h-10'>
+                                        <div className='absolute top-0 left-0 h-full w-6 rounded-tl-xl border-t border-l bg-card'></div>
+                                        <Mask className='absolute top-0 -right-9 rotate-x-0 rotate-y-0' />
+                                        <Button variant='ghost' className='z-10' onClick={() => switchAnswer(it.id)}>
+                                            <XIcon size={18} />
+                                        </Button>
+                                    </div>
+                                    {it.answer?.type === 'pic' ? (
+                                        <img src={it.answer.value} alt='answer' />
+                                    ) : (
+                                        <pre className='overflow-hidden p-4 break-all whitespace-pre-wrap'>
+                                            {it.answer?.value}
+                                        </pre>
+                                    )}
+                                </div>
+                            )}
                         </div>
                     ))}
                 </main>

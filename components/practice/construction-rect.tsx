@@ -112,7 +112,6 @@ export function ConstructionRect({
             let newY = rect.y + dy
             let newW = Math.max(10, resizeStart.current.w - dx)
             let newH = Math.max(10, resizeStart.current.h - dy)
-            // 限制左上角不能超出
             if (newX < 0) {
                 newW += newX
                 newX = 0
@@ -128,7 +127,34 @@ export function ConstructionRect({
             newRect.w = newW
             newRect.h = newH
         }
-        // 可扩展其他方向
+        if (resizeStart.current.dir === 'ne') {
+            let newY = rect.y + dy
+            let newH = Math.max(10, resizeStart.current.h - dy)
+            let newW = Math.max(10, resizeStart.current.w + dx)
+            if (newY < 0) {
+                newH += newY
+                newY = 0
+            }
+            newW = Math.min(newW, parent.width - rect.x)
+            newH = Math.min(newH, parent.height - newY)
+            newRect.y = newY
+            newRect.w = newW
+            newRect.h = newH
+        }
+        if (resizeStart.current.dir === 'sw') {
+            let newX = rect.x + dx
+            let newW = Math.max(10, resizeStart.current.w - dx)
+            let newH = Math.max(10, resizeStart.current.h + dy)
+            if (newX < 0) {
+                newW += newX
+                newX = 0
+            }
+            newW = Math.min(newW, parent.width - newX)
+            newH = Math.min(newH, parent.height - rect.y)
+            newRect.x = newX
+            newRect.w = newW
+            newRect.h = newH
+        }
         onChange(newRect)
     }
 
@@ -160,6 +186,16 @@ export function ConstructionRect({
             <div
                 className='absolute -top-1.5 -left-1.5 h-3 w-3 cursor-nwse-resize hover:border-2 hover:border-main hover:bg-card'
                 onMouseDown={e => handleResizeMouseDown(e, 'nw')}
+            />
+            {/* 右上角拉手 */}
+            <div
+                className='absolute -top-1.5 -right-1.5 h-3 w-3 cursor-nesw-resize hover:border-2 hover:border-main hover:bg-card'
+                onMouseDown={e => handleResizeMouseDown(e, 'ne')}
+            />
+            {/* 左下角拉手 */}
+            <div
+                className='absolute -bottom-1.5 -left-1.5 h-3 w-3 cursor-nesw-resize hover:border-2 hover:border-main hover:bg-card'
+                onMouseDown={e => handleResizeMouseDown(e, 'sw')}
             />
             {children}
         </div>
