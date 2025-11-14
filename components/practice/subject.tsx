@@ -25,7 +25,7 @@ interface Props {
 
 export default memo(function PracticeSubject({ node, deep = 0, active, editing, onClick }: Props) {
     const overviewData = usePracticeStore(s => s.selectingPracticeSetData!.overview)
-    const { setOverviewData } = usePracticeStore(s => s.actions)
+    const { updateOverviewData } = usePracticeStore(s => s.actions)
 
     const [isSelfEditing, setIsSelfEditing] = useState(false)
     const [currentTitle, setCurrentTitle] = useState(node.title)
@@ -48,7 +48,7 @@ export default memo(function PracticeSubject({ node, deep = 0, active, editing, 
         }
         // 使用辅助函数计算新树
         const newTree = findAndUpdate(overviewData, node.title, currentTitle)
-        setOverviewData(newTree)
+        updateOverviewData(newTree)
         setIsSelfEditing(false)
     }
 
@@ -60,7 +60,7 @@ export default memo(function PracticeSubject({ node, deep = 0, active, editing, 
             description: '该操作不可撤销！',
             onConfirm: () => {
                 const newTree = findAndRemove(overviewData!, node.title)
-                setOverviewData(newTree)
+                updateOverviewData(newTree)
             },
         })
     }
@@ -75,7 +75,7 @@ export default memo(function PracticeSubject({ node, deep = 0, active, editing, 
 
         // 使用辅助函数计算新树
         const newTree = findAndAdd(overviewData, node.title, newNode)
-        setOverviewData(newTree)
+        updateOverviewData(newTree)
     }
 
     function findAndRemove(nodes: OverviewData[], title: string): OverviewData[] {

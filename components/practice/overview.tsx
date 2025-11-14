@@ -14,7 +14,7 @@ export function PracticeOverview() {
     const overviewData = usePracticeStore(s => s.selectingPracticeSetData!.overview)
     const editing = usePracticeStore(s => s.editing)
 
-    const { selectSubject, setOverviewData } = usePracticeStore(s => s.actions)
+    const { selectSubject, updateOverviewData } = usePracticeStore(s => s.actions)
 
     const [width, setWidth] = useState(286)
 
@@ -31,7 +31,7 @@ export function PracticeOverview() {
 
         const newTree = overviewData ? [...overviewData, newNode] : [newNode]
 
-        setOverviewData(newTree)
+        updateOverviewData(newTree)
     }
 
     function handleResize(dx: number) {

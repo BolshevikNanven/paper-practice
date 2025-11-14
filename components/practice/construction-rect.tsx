@@ -201,3 +201,106 @@ export function ConstructionRect({
         </div>
     )
 }
+
+export interface ImageLayoutWithElement {
+    src: string
+    y: number // 相对于容器的顶部偏移
+    height: number
+    width: number
+    naturalHeight: number
+    naturalWidth: number
+    element: HTMLImageElement // 实际的 <img> 元素
+}
+/**
+ * 从堆叠的图片中裁剪单个矩形区域。
+ */
+export async function cropSingleRect(rect: Rect, imageLayouts: ImageLayoutWithElement[]): Promise<Blob | null> {
+    if (imageLayouts.length === 0) return null
+
+    const refImg = imageLayouts[0]
+    // 计算参考缩放比例
+    const refScaleX = refImg.naturalWidth / refImg.width
+    const refScaleY = refImg.naturalHeight / refImg.height
+
+    const canvas = document.createElement('canvas')
+    canvas.width = rect.w * refScaleX
+    canvas.height = rect.h * refScaleY
+    const ctx = canvas.getContext('2d')
+
+    if (!ctx) {
+        console.error('无法从 canvas 获取 2D 上下文')
+        return null
+    }
+
+    // 遍历每张图片，看它是否与 rect 重叠
+    for (const imgLayout of imageLayouts) {
+        const imgTop = imgLayout.y
+        const imgBottom = imgLayout.y + imgLayout.height
+        const imgLeft = 0
+        const imgRight = imgLayout.width
+
+        const rectTop = rect.y
+        const rectBottom = rect.y + rect.h
+        const rectLeft = rect.x
+        const rectRight = rect.x + rect.w
+
+        // 检查是否有交集
+        const overlapsY = rectTop < imgBottom && rectBottom > imgTop
+        const overlapsX = rectLeft < imgRight && rectRight > imgLeft
+
+        if (overlapsX && overlapsY) {
+            // 这张图片和 rect 重叠了。
+            // 计算精确的相交区域。
+            const intersectLeft = Math.max(rectLeft, imgLeft)
+            const intersectTop = Math.max(rectTop, imgTop)
+            const intersectRight = Math.min(rectRight, imgRight)
+            const intersectBottom = Math.min(rectBottom, imgBottom)
+
+            const intersectWidth = intersectRight - intersectLeft
+            const intersectHeight = intersectBottom - intersectTop
+
+            if (intersectWidth > 0 && intersectHeight > 0) {
+                const imgScaleX = imgLayout.naturalWidth / imgLayout.width
+                const imgScaleY = imgLayout.naturalHeight / imgLayout.height
+                // (sX, sY, sW, sH) - 从源图片(原始尺寸)中截取的位置
+                // 我们用“屏幕坐标”的偏移量 * 该图片的缩放比例
+                const sX = (intersectLeft - imgLeft) * imgScaleX
+                const sY = (intersectTop - imgTop) * imgScaleY
+                const sW = intersectWidth * imgScaleX
+                const sH = intersectHeight * imgScaleY
+
+                // (dX, dY, dW, dH) - 绘制到目标 canvas(原始尺寸)上的位置
+                // 我们用“屏幕坐标”的偏移量 * 画布的参考缩放比例
+                const dX = (intersectLeft - rectLeft) * refScaleX
+                const dY = (intersectTop - rectTop) * refScaleY
+                const dW = intersectWidth * refScaleX
+                const dH = intersectHeight * refScaleY
+
+                try {
+                    // 将图像的相交部分绘制到画布上
+                    ctx.drawImage(
+                        imgLayout.element,
+                        sX,
+                        sY,
+                        sW,
+                        sH, // 源矩形
+                        dX,
+                        dY,
+                        dW,
+                        dH, // 目标矩形
+                    )
+                } catch (e) {
+                    console.error('绘制图像到 canvas 失败', e)
+                    return null // 如果一张图片失败，我们就无法创建有效的裁剪。
+                }
+            }
+        }
+    }
+
+    // 将填充好的 canvas 转换为 Blob
+    return new Promise(resolve => {
+        canvas.toBlob(blob => {
+            resolve(blob)
+        }, 'image/png')
+    })
+}

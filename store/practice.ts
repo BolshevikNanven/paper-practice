@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { ChunkData, PracticeSetData } from './interface'
+import { ChunkData, OverviewData, PracticeSetData } from './interface'
 import { Repository } from '@/db/repository'
 
 interface Store {
@@ -20,6 +20,7 @@ interface Store {
         closePlayground: () => void
         selectSubject: (subject?: string) => void
         loadPracticeSetData: (id: string, preset?: boolean) => Promise<void>
+        updateOverviewData: (data: OverviewData[]) => Promise<void>
     }
 }
 
@@ -38,7 +39,7 @@ export const usePracticeStore = create<Store>()((set, get) => ({
     actions: {
         switchEditMode(state) {
             set({
-                editing: state || !get().editing,
+                editing: state === undefined ? !get().editing : state,
                 selectingSubject: undefined,
                 constructing: undefined,
             })
@@ -106,6 +107,14 @@ export const usePracticeStore = create<Store>()((set, get) => ({
             }
 
             set({ selectingPracticeSetData: data })
+        },
+        async updateOverviewData(data) {
+            const practiceSet = get().selectingPracticeSetData
+            if (!practiceSet) {
+                return
+            }
+            await Repository.updatePracticeSetMeta(practiceSet.id, { overview: data })
+            set({ selectingPracticeSetData: { ...practiceSet, overview: data } })
         },
     },
 }))

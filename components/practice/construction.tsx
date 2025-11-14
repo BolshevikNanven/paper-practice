@@ -3,11 +3,11 @@
 import { ImageIcon, TrashIcon } from '@phosphor-icons/react'
 import { Button } from '../common/button'
 import { MovableDivider } from '../common/movable-divider'
-import ConstructionCreator from './construction-creator'
+import ConstructionCreator, { ConstructionCreatorRef } from './construction-creator'
 import { usePracticeStore } from '@/store/practice'
 
 import ConstructionEditor from './construction-editor'
-import { useMemo, useState } from 'react'
+import { useMemo, useRef, useState } from 'react'
 
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '../ui/textarea'
@@ -15,6 +15,7 @@ import { UploadWrapper } from '../common/upload-wrapper'
 import { SubjectSelector } from './subjects-selector'
 import { deepClone } from '@/lib/utils'
 import { ChunkData } from '@/store/interface'
+import { ConstructionPreviewer } from './construction-previewer'
 
 export function PracticeConstruction() {
     const constructing = usePracticeStore(s => s.constructing)
@@ -34,7 +35,9 @@ export function PracticeConstruction() {
     const [selectedChunkId, setSelectedChunkId] = useState<string>()
     const selectedChunk = useMemo(() => chunks.find(chunk => chunk.id === selectedChunkId), [selectedChunkId, chunks])
 
+    const [previewerOpen, setPreviewerOpen] = useState(false)
     const [selectorOpen, setSelectorOpen] = useState(false)
+    const creatorRef = useRef<ConstructionCreatorRef>(null)
 
     function handleSelectChunk(id: string) {
         setSelectedChunkId(id)
@@ -97,6 +100,14 @@ export function PracticeConstruction() {
         }))
     }
 
+    async function handlePreview() {
+        await creatorRef.current?.cropRectsToBlobs()
+
+        setPreviewerOpen(true)
+    }
+
+    function handleSave(title: string) {}
+
     return (
         <div className='flex flex-1 overflow-hidden'>
             <div className='flex flex-1 flex-col gap-4'>
@@ -109,6 +120,7 @@ export function PracticeConstruction() {
                     />
                 ) : (
                     <ConstructionCreator
+                        ref={creatorRef}
                         chunks={chunks}
                         onChange={setChunks}
                         selectedChunk={selectedChunk}
@@ -192,7 +204,16 @@ export function PracticeConstruction() {
                     )}
                 </div>
                 <footer className='my-4 flex h-10 flex-row-reverse items-center gap-4 px-4'>
-                    <Button variant='primary'>预览并保存</Button>
+                    <ConstructionPreviewer
+                        open={previewerOpen}
+                        onOpenChange={setPreviewerOpen}
+                        chunks={chunks}
+                        onConfirm={handleSave}
+                    >
+                        <Button variant='primary' onClick={handlePreview}>
+                            预览并保存
+                        </Button>
+                    </ConstructionPreviewer>
                     {typeof constructing === 'string' && (
                         <Button className='text-red-600'>
                             <TrashIcon size={18} />

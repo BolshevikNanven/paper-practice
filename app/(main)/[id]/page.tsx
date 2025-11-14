@@ -20,7 +20,7 @@ export default function PracticePage() {
     const isEditing = usePracticeStore(s => s.editing)
     const constructing = usePracticeStore(s => s.constructing)
     const selectingPracticeSetData = usePracticeStore(s => s.selectingPracticeSetData)
-    const { loadPracticeSetData } = usePracticeStore(s => s.actions)
+    const { loadPracticeSetData, switchEditMode } = usePracticeStore(s => s.actions)
 
     const [isLoading, setIsLoading] = useState(true)
 
@@ -29,8 +29,9 @@ export default function PracticePage() {
 
         setIsLoading(true)
         await loadPracticeSetData(id as string, isPublic)
+        switchEditMode(false)
         setIsLoading(false)
-    }, [id, searchParams, loadPracticeSetData])
+    }, [id, searchParams, loadPracticeSetData, switchEditMode])
 
     useEffect(() => {
         ;(async () => {

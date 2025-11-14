@@ -3,9 +3,9 @@
 import { CropIcon, RobotIcon, TrashIcon, UploadSimpleIcon } from '@phosphor-icons/react'
 import { Button } from '../common/button'
 import { ButtonGroup } from '../common/button-group'
-import React, { memo, useRef, useState } from 'react'
+import React, { memo, useRef, useState, forwardRef, useImperativeHandle } from 'react'
 import { ConstructionHeader } from './construction-header'
-import { ConstructionRect, Rect } from './construction-rect'
+import { ConstructionRect, cropSingleRect, ImageLayoutWithElement, Rect } from './construction-rect'
 import { ChunkData } from '@/store/interface'
 import { nanoid } from 'nanoid'
 import { cn } from '@/lib/utils'
@@ -17,7 +17,15 @@ interface Props {
     onSelect: (id: string) => void
     onChange: (chunks: ChunkData[]) => void
 }
-export default memo(function ConstructionCreator({ chunks, selectedChunk, onSelect, onChange }: Props) {
+
+export interface ConstructionCreatorRef {
+    cropRectsToBlobs: () => Promise<void>
+}
+
+const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function ConstructionCreator(
+    { chunks, selectedChunk, onSelect, onChange },
+    ref,
+) {
     const [papers, setPapers] = useState<string[]>([])
 
     const [isCropping, setIsCropping] = useState(false)
@@ -26,6 +34,47 @@ export default memo(function ConstructionCreator({ chunks, selectedChunk, onSele
     const [isDragging, setIsDragging] = useState(false)
     const startPoint = useRef<{ x: number; y: number } | null>(null)
     const containerRef = useRef<HTMLDivElement>(null)
+
+    useImperativeHandle(ref, () => ({
+        async cropRectsToBlobs() {
+            if (!containerRef.current || !cropRects.length) {
+                return
+            }
+
+            const imgElements = Array.from(containerRef.current.querySelectorAll('img'))
+
+            // 获取每张图片渲染后的位置和大小
+            const imageLayouts: ImageLayoutWithElement[] = imgElements.map(img => ({
+                src: img.src,
+                y: img.offsetTop,
+                height: img.offsetHeight,
+                width: img.offsetWidth,
+                naturalHeight: img.naturalHeight,
+                naturalWidth: img.naturalWidth,
+                element: img, // 传递元素本身以便绘制
+            }))
+
+            // 2. 并行处理所有裁剪矩形
+            const resultMap: Record<string, Blob> = {}
+            await Promise.all(
+                cropRects.map(async rect => {
+                    const blob = await cropSingleRect(rect, imageLayouts)
+                    if (blob) {
+                        resultMap[rect.id] = blob
+                    } else {
+                        throw new Error('图片裁剪失败')
+                    }
+                }),
+            )
+
+            onChange(
+                chunks.map(chunk => ({
+                    ...chunk,
+                    source: resultMap[chunk.id],
+                })),
+            )
+        },
+    }))
 
     function handleSwitchCrop() {
         setIsCropping(!isCropping)
@@ -181,3 +230,5 @@ export default memo(function ConstructionCreator({ chunks, selectedChunk, onSele
         </>
     )
 })
+
+export default memo(ConstructionCreator)

@@ -27,6 +27,7 @@ export function Button({ variant, size, disabled, className, children, ...props 
                 },
                 className,
             )}
+            disabled={disabled}
             {...props}
         >
             {children}

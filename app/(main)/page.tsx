@@ -1,11 +1,9 @@
 'use client'
 
 import { Navigation } from '@/components/home/navigation'
+import { PracticeCreator } from '@/components/home/practice-creator'
 import { PracticeSet } from '@/components/home/practice-set'
-import { Repository } from '@/db/repository'
-import { getPresetPracticeSets } from '@/lib/cache'
-import { PracticeSetData, PresetPracticeMapData } from '@/store/interface'
-import { PlusIcon } from '@phosphor-icons/react'
+import { usePracticeSetStore } from '@/store/practice-set'
 import { useState, useEffect } from 'react'
 
 export const Tab = {
@@ -17,29 +15,16 @@ export const Tab = {
 export default function Home() {
     const [tab, setTab] = useState<keyof typeof Tab>('public')
 
-    const [presetData, setPresetData] = useState<PresetPracticeMapData[]>([])
-    const [privateData, setPrivateData] = useState<PracticeSetData[]>([])
+    const presetData = usePracticeSetStore(s => s.presetData)
+    const privateData = usePracticeSetStore(s => s.privateData)
+    const { loadPresetData, loadPrivateData } = usePracticeSetStore(s => s.actions)
 
     useEffect(() => {
-        getPresetPracticeSets().then(setPresetData)
-    }, [])
+        loadPrivateData()
+        loadPresetData()
+    }, [loadPresetData, loadPrivateData])
 
     async function handleNavigate(tab: keyof typeof Tab) {
-        switch (tab) {
-            case 'public': {
-                const data = await getPresetPracticeSets()
-                setPresetData(data)
-                break
-            }
-            case 'own': {
-                const data = await Repository.listPracticeSets()
-                setPrivateData(data)
-                break
-            }
-            default:
-                break
-        }
-
         setTab(tab)
     }
 
@@ -51,16 +36,26 @@ export default function Home() {
                 <div className='flex flex-wrap gap-8'>
                     {tab === 'public' &&
                         presetData.map(it => (
-                            <PracticeSet key={it.id} route={`/${it.id}?public`} title={it.title} updatedAt={it.updatedAt} />
+                            <PracticeSet
+                                key={it.id}
+                                id={it.id}
+                                route={`/${it.id}?public`}
+                                title={it.title}
+                                updatedAt={it.updatedAt}
+                            />
                         ))}
                     {tab === 'own' && (
                         <>
-                            <div className='flex aspect-3/4 w-60 cursor-pointer flex-col border-2 p-4 transition-all hover:scale-105 active:scale-95'>
-                                <PlusIcon size={32} className='m-auto text-muted-foreground' />
-                                <p className=' text-sm'>创建新题库</p>
-                            </div>
+                            <PracticeCreator />
                             {privateData.map(it => (
-                                <PracticeSet key={it.id} route={`/${it.id}`} title={it.title} updatedAt={it.updatedAt} />
+                                <PracticeSet
+                                    key={it.id}
+                                    id={it.id}
+                                    route={`/${it.id}`}
+                                    title={it.title}
+                                    editable
+                                    updatedAt={it.updatedAt}
+                                />
                             ))}
                         </>
                     )}

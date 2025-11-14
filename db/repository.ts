@@ -1,60 +1,26 @@
 import { nanoid } from 'nanoid'
 import { ChunkContentDB, ChunkDB, PracticeDataDB, PracticeSetDB } from './interface'
-import { ChunkData, PracticeData, PracticeSetData } from '@/store/interface'
+import { ChunkData, OverviewData, PracticeData, PracticeSetData } from '@/store/interface'
 import { db } from '.'
 import dayjs from 'dayjs'
 
 export const Repository = {
-    async addPracticeSet(practiceSet: PracticeSetData) {
+    async createPracticeSet(title: string) {
         // 1. 为顶层 set 生成一个新 ID
         const newSetId = nanoid()
 
         // 2. 准备所有表的数据
         const setForDB: PracticeSetDB = {
             id: newSetId,
-            title: practiceSet.title,
-            overview: practiceSet.overview,
+            title: title,
+            overview: [],
             updatedAt: dayjs().format('YYYY-MM-DD'),
         }
 
-        const practicesForDB: PracticeDataDB[] = []
-        const chunksForDB: ChunkDB[] = []
-        const contentsForDB: ChunkContentDB[] = []
-
-        for (const practice of practiceSet.set) {
-            // 2a. 添加 PracticeData (并关联到 set)
-            practicesForDB.push({
-                id: practice.id,
-                practiceSetId: newSetId,
-                title: practice.title,
-            })
-
-            for (const chunk of practice.chunks) {
-                // 2b. 添加 Chunk (并关联到 practice)
-                chunksForDB.push({
-                    id: chunk.id,
-                    practiceDataId: practice.id,
-                    subjects: chunk.subjects,
-                })
-
-                // 2c. 添加 ChunkContent (分离大文件)
-                contentsForDB.push({
-                    id: chunk.id,
-                    source: chunk.source,
-                    answer: chunk.answer,
-                })
-            }
-        }
-
-        // 3. 在一个事务中批量添加所有数据
         try {
             await db.transaction('rw', db.practiceSets, db.practiceData, db.chunks, db.chunkContent, async () => {
                 await db.practiceSets.add(setForDB)
-                await db.practiceData.bulkAdd(practicesForDB)
-                await db.chunks.bulkAdd(chunksForDB)
-                await db.chunkContent.bulkAdd(contentsForDB)
             })
-            console.log('Practice set added successfully!')
             return newSetId
         } catch (error) {
             console.error('Failed to add practice set:', error)
@@ -129,12 +95,174 @@ export const Repository = {
             updatedAt: it.updatedAt,
         }))
     },
-    async updatePracticeSet(id: string, data: PracticeSetData): Promise<void> {
-        if (data.id !== id) {
-            throw new Error('PracticeSet data ID 和传入的 id 不匹配')
+    /**
+     * 向一个 PracticeSet 添加一个新的 Practice
+     *
+     * 此方法是事务性的，会同时添加 PracticeData, Chunks,
+     * 和 ChunkContent，并更新 PracticeSet 的 `updatedAt`。
+     */
+    async addPractice(practiceSetId: string, newPractice: PracticeData): Promise<void> {
+        const practicesForDB: PracticeDataDB[] = []
+        const chunksForDB: ChunkDB[] = []
+        const contentsForDB: ChunkContentDB[] = []
+
+        // --- 1. 解构 Practice ---
+        practicesForDB.push({
+            id: newPractice.id,
+            practiceSetId: practiceSetId, // 关联到顶层 Set
+            title: newPractice.title,
+        })
+
+        for (const chunk of newPractice.chunks) {
+            chunksForDB.push({
+                id: chunk.id,
+                practiceDataId: newPractice.id, // 关联到 Practice
+                subjects: chunk.subjects,
+            })
+
+            contentsForDB.push({
+                id: chunk.id,
+                source: chunk.source,
+                answer: chunk.answer,
+            })
         }
 
-        // 在一个事务中执行 "删除所有旧的" -> "添加所有新的" 操作
+        // --- 2. 在事务中执行写入 ---
+        await db.transaction(
+            'rw',
+            db.practiceData,
+            db.chunks,
+            db.chunkContent,
+            db.practiceSets, // 需要包含 practiceSets 来更新时间戳
+            async () => {
+                // 2a. 批量添加所有新数据
+                await db.practiceData.bulkAdd(practicesForDB)
+                await db.chunks.bulkAdd(chunksForDB)
+                await db.chunkContent.bulkAdd(contentsForDB)
+
+                // 2b. 更新 PracticeSet 的 `updatedAt`
+                await db.practiceSets.where({ id: practiceSetId }).modify({
+                    updatedAt: dayjs().format('YYYY-MM-DD'),
+                })
+            },
+        )
+    },
+    /**
+     * 删除一个 Practice (及其所有子数据)
+     *
+     * 此方法是事务性的，会自下而上地删除：
+     * 1. ChunkContent
+     * 2. Chunks
+     * 3. PracticeData
+     * 然后更新 PracticeSet 的 `updatedAt`。
+     */
+    async deletePractice(practiceId: string): Promise<void> {
+        // 我们需要先获取 practice 来找到它的 parentSetId
+        const practice = await db.practiceData.get(practiceId)
+        if (!practice) {
+            console.warn(`删除失败：未找到 ID 为 ${practiceId} 的 Practice`)
+            return // 如果不存在，则静默失败
+        }
+        const practiceSetId = practice.practiceSetId
+
+        await db.transaction('rw', db.practiceData, db.chunks, db.chunkContent, db.practiceSets, async () => {
+            // --- 1. 找到所有旧的 Chunk ID ---
+            const oldChunks = await db.chunks.where({ practiceDataId: practiceId }).toArray()
+            const oldChunkIds = oldChunks.map(c => c.id)
+
+            // --- 2. 自下而上删除 ---
+            // 2a. 删除 ChunkContent
+            if (oldChunkIds.length > 0) {
+                await db.chunkContent.bulkDelete(oldChunkIds)
+            }
+            // 2b. 删除 Chunks
+            await db.chunks.where({ practiceDataId: practiceId }).delete()
+            // 2c. 删除 PracticeData
+            await db.practiceData.delete(practiceId)
+
+            // --- 3. 更新 PracticeSet 的 `updatedAt` ---
+            await db.practiceSets.where({ id: practiceSetId }).modify({
+                updatedAt: dayjs().format('YYYY-MM-DD'),
+            })
+        })
+    },
+    /**
+     * 更新一个已有的 Practice
+     *
+     * 此方法会：
+     * 1. 更新 PracticeData 的 title
+     * 2. 删除所有旧的 Chunks/ChunkContent
+     * 3. 添加所有新的 Chunks/ChunkContent
+     * 4. 更新 PracticeSet 的 `updatedAt`
+     */
+    async updatePractice(practiceId: string, updatedPractice: PracticeData): Promise<void> {
+        // 验证 ID 是否匹配
+        if (practiceId !== updatedPractice.id) {
+            throw new Error('Practice ID 不匹配')
+        }
+
+        const practice = await db.practiceData.get(practiceId)
+        if (!practice) {
+            throw new Error(`更新失败：未找到 ID 为 ${practiceId} 的 Practice`)
+        }
+        const practiceSetId = practice.practiceSetId
+
+        // --- 准备新的子数据 ---
+        const chunksForDB: ChunkDB[] = []
+        const contentsForDB: ChunkContentDB[] = []
+
+        for (const chunk of updatedPractice.chunks) {
+            chunksForDB.push({
+                id: chunk.id,
+                practiceDataId: practiceId, // 关联到 Practice
+                subjects: chunk.subjects,
+            })
+            contentsForDB.push({
+                id: chunk.id,
+                source: chunk.source,
+                answer: chunk.answer,
+            })
+        }
+
+        // --- 在事务中执行 "删-改-增" ---
+        await db.transaction('rw', db.practiceData, db.chunks, db.chunkContent, db.practiceSets, async () => {
+            // --- 1. 删除所有旧的子数据 ---
+            const oldChunks = await db.chunks.where({ practiceDataId: practiceId }).toArray()
+            const oldChunkIds = oldChunks.map(c => c.id)
+            if (oldChunkIds.length > 0) {
+                await db.chunkContent.bulkDelete(oldChunkIds)
+            }
+            await db.chunks.where({ practiceDataId: practiceId }).delete()
+
+            // --- 2. 更新 PracticeData 本身 (例如 title) ---
+            await db.practiceData.update(practiceId, {
+                title: updatedPractice.title,
+            })
+
+            // --- 3. 添加所有新的子数据 ---
+            await db.chunks.bulkAdd(chunksForDB)
+            await db.chunkContent.bulkAdd(contentsForDB)
+
+            // --- 4. 更新 PracticeSet 的 `updatedAt` ---
+            await db.practiceSets.where({ id: practiceSetId }).modify({
+                updatedAt: dayjs().format('YYYY-MM-DD'),
+            })
+        })
+    },
+    async updatePracticeSetMeta(id: string, changes: { title?: string; overview?: OverviewData[] }): Promise<void> {
+        const modifications: Partial<PracticeSetDB> = {
+            ...changes,
+            updatedAt: dayjs().format('YYYY-MM-DD'), // 自动更新时间戳
+        }
+
+        //@ts-expect-error: 循环引用报错
+        const count = await db.practiceSets.where({ id: id }).modify(modifications)
+
+        if (count === 0) {
+            throw new Error(`更新失败：未找到 ID 为 ${id} 的 PracticeSet`)
+        }
+    },
+    async deletePracticeSet(id: string): Promise<void> {
         await db.transaction(
             'rw', // 读写模式
             db.practiceSets,
@@ -142,75 +270,30 @@ export const Repository = {
             db.chunks,
             db.chunkContent,
             async () => {
-                // --- 1. 删除所有旧的子数据 ---
-
-                // 1a. 找到所有旧的 Practice
+                // --- 1. 找到所有关联的 PracticeData ---
                 const oldPractices = await db.practiceData.where({ practiceSetId: id }).toArray()
                 const oldPracticeIds = oldPractices.map(p => p.id)
 
+                // --- 2. 找到所有关联的 Chunks 和 Content ---
                 if (oldPracticeIds.length > 0) {
-                    // 1b. 找到所有旧的 Chunk ID
+                    // 2a. 找到所有 Chunks
                     const oldChunks = await db.chunks.where('practiceDataId').anyOf(oldPracticeIds).toArray()
                     const oldChunkIds = oldChunks.map(c => c.id)
 
-                    // 1c. 批量删除旧的 Chunk 和 ChunkContent
+                    // 2b. 删除所有关联的 ChunkContent
                     if (oldChunkIds.length > 0) {
                         await db.chunkContent.bulkDelete(oldChunkIds)
-                        await db.chunks.where('practiceDataId').anyOf(oldPracticeIds).delete()
                     }
+
+                    // 2c. 删除所有关联的 Chunks
+                    await db.chunks.where('practiceDataId').anyOf(oldPracticeIds).delete()
                 }
 
-                // 1d. 删除旧的 PracticeData
+                // --- 3. 删除所有关联的 PracticeData ---
                 await db.practiceData.where({ practiceSetId: id }).delete()
 
-                // --- 2. 插入所有新的数据 (解构) ---
-
-                // 2a. 准备顶层 PracticeSet
-                const setForDB: PracticeSetDB = {
-                    id: data.id,
-                    title: data.title,
-                    overview: data.overview,
-                    updatedAt: data.updatedAt,
-                }
-
-                // 2b. 准备所有子数据
-                const practicesForDB: PracticeDataDB[] = []
-                const chunksForDB: ChunkDB[] = []
-                const contentsForDB: ChunkContentDB[] = []
-
-                for (const practice of data.set) {
-                    practicesForDB.push({
-                        id: practice.id,
-                        practiceSetId: data.id, // 关联到顶层 Set
-                        title: practice.title,
-                    })
-
-                    for (const chunk of practice.chunks) {
-                        chunksForDB.push({
-                            id: chunk.id,
-                            practiceDataId: practice.id, // 关联到 Practice
-                            subjects: chunk.subjects,
-                        })
-
-                        // 分离大文件
-                        contentsForDB.push({
-                            id: chunk.id,
-                            source: chunk.source,
-                            answer: chunk.answer,
-                        })
-                    }
-                }
-
-                // --- 3. 执行写入 ---
-
-                // 'put' = 插入或更新 (安全)
-                await db.practiceSets.put(setForDB)
-
-                // 'bulkAdd' = 批量添加 (高效)
-                // 因为我们刚删除了所有旧数据，所以这里用 bulkAdd 是安全的
-                await db.practiceData.bulkAdd(practicesForDB)
-                await db.chunks.bulkAdd(chunksForDB)
-                await db.chunkContent.bulkAdd(contentsForDB)
+                // --- 4. 删除顶层的 PracticeSet ---
+                await db.practiceSets.delete(id)
             },
         )
     },
