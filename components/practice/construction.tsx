@@ -4,7 +4,8 @@ import { ImageIcon, TrashIcon } from '@phosphor-icons/react'
 import { Button } from '../common/button'
 import { MovableDivider } from '../common/movable-divider'
 import ConstructionCreator from './construction-creator'
-import { ChunkData, usePracticeStore } from '@/store/practice'
+import { usePracticeStore } from '@/store/practice'
+
 import ConstructionEditor from './construction-editor'
 import { useMemo, useState } from 'react'
 
@@ -13,10 +14,11 @@ import { Textarea } from '../ui/textarea'
 import { UploadWrapper } from '../common/upload-wrapper'
 import { SubjectSelector } from './subjects-selector'
 import { deepClone } from '@/lib/utils'
+import { ChunkData } from '@/store/interface'
 
 export function PracticeConstruction() {
     const constructing = usePracticeStore(s => s.constructing)
-    const practiceData = usePracticeStore(s => s.data)
+    const practiceData = usePracticeStore(s => s.selectingPracticeSetData!.set)
 
     const practice = useMemo(() => practiceData.find(it => it.id === constructing), [constructing, practiceData])
 
@@ -179,7 +181,7 @@ export function PracticeConstruction() {
                                     </div>
                                 ) : (
                                     <Textarea
-                                        value={selectedChunk.answer?.value}
+                                        value={selectedChunk.answer?.value as string}
                                         onChange={handleInputAnswerText}
                                         placeholder='在此输入详解'
                                         className='min-h-24 bg-card'

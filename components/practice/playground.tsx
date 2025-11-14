@@ -72,8 +72,8 @@ export function PracticePlayground() {
                     </div>
                 </header>
                 <main className='m-auto flex flex-col gap-8 pt-12 pb-[40vh]' style={{ width: scaleRatio + '%' }}>
-                    {chunks.map(it => (
-                        <div key={it.id} className='flex flex-col'>
+                    {chunks.map((it, idx) => (
+                        <div key={it.id + idx} className='flex flex-col'>
                             <img src={it.source} alt='practicing' className='rounded-sm rounded-br-none border bg-card' />
                             <div className='relative ml-auto flex h-10 -translate-y-px'>
                                 <div className='absolute top-0 right-0 -z-10 h-full w-[calc(100%-16px)] rounded-br-xl border-r border-b bg-card' />
@@ -100,7 +100,7 @@ export function PracticePlayground() {
                                         <img src={it.answer.value} alt='answer' />
                                     ) : (
                                         <pre className='overflow-hidden p-4 break-all whitespace-pre-wrap'>
-                                            {it.answer?.value}
+                                            {it.answer?.value as string}
                                         </pre>
                                     )}
                                 </div>

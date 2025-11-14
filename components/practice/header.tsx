@@ -2,15 +2,17 @@
 
 import { HouseSimpleIcon, ListIcon, PlayIcon, PlusIcon, ShuffleAngularIcon, UserIcon, WrenchIcon } from '@phosphor-icons/react'
 import { Button } from '../common/button'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { usePracticeStore } from '@/store/practice'
 
 export function PracticeHeader() {
+    const selectingPracticeSetData = usePracticeStore(s => s.selectingPracticeSetData!)
     const selectedSubject = usePracticeStore(s => s.selectingSubject)
     const isEditing = usePracticeStore(s => s.editing)
     const isConstructing = usePracticeStore(s => s.constructing)
 
     const router = useRouter()
+    const searchParams = useSearchParams()
 
     const { switchEditMode, openPlayground, switchConstruction } = usePracticeStore(s => s.actions)
 
@@ -34,7 +36,7 @@ export function PracticeHeader() {
                     <HouseSimpleIcon size={18} />
                 </Button>
                 <span className='mr-2'>/</span>
-                <h1 className='text-sm'>考研数学历年真题</h1>
+                <h1 className='text-sm'>{selectingPracticeSetData.title}</h1>
             </div>
             <span className='flex-1' />
             {!isEditing && (
@@ -55,10 +57,13 @@ export function PracticeHeader() {
                     新建资料
                 </Button>
             )}
-            <Button variant={isEditing ? 'primary' : 'default'} onClick={() => switchEditMode()}>
-                <WrenchIcon size={18} />
-                {isEditing ? '退出编辑' : '编辑模式'}
-            </Button>
+            {!searchParams.has('public') && (
+                <Button variant={isEditing ? 'primary' : 'default'} onClick={() => switchEditMode()}>
+                    <WrenchIcon size={18} />
+                    {isEditing ? '退出编辑' : '编辑模式'}
+                </Button>
+            )}
+
             <Button variant='icon'>
                 <UserIcon size={18} />
             </Button>

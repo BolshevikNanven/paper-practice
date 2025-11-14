@@ -1,8 +1,9 @@
 'use client'
 
-import { PracticeData, usePracticeStore } from '@/store/practice'
+import { usePracticeStore } from '@/store/practice'
 import { cn } from '@/lib/utils'
 import { MouseEvent } from 'react'
+import { PracticeData } from '@/store/interface'
 
 interface Props {
     data: PracticeData

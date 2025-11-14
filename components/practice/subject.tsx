@@ -1,12 +1,13 @@
 'use client'
 
 import { cn } from '@/lib/utils'
-import { OverviewData, usePracticeStore } from '@/store/practice'
+import { usePracticeStore } from '@/store/practice'
 import { nanoid } from 'nanoid'
 import { memo, useState } from 'react'
 import { Button } from '../common/button'
 import { PlusIcon, TrashIcon } from '@phosphor-icons/react'
 import { useDialog } from '../common/confirm-dialog'
+import { OverviewData } from '@/store/interface'
 
 export interface PracticeNode {
     title: string
@@ -23,7 +24,7 @@ interface Props {
 }
 
 export default memo(function PracticeSubject({ node, deep = 0, active, editing, onClick }: Props) {
-    const overviewData = usePracticeStore(s => s.overviewData)
+    const overviewData = usePracticeStore(s => s.selectingPracticeSetData!.overview)
     const { setOverviewData } = usePracticeStore(s => s.actions)
 
     const [isSelfEditing, setIsSelfEditing] = useState(false)
@@ -142,7 +143,7 @@ export default memo(function PracticeSubject({ node, deep = 0, active, editing, 
         <div
             onClick={handleSelect}
             className={cn(
-                'group flex h-9 shrink-0 cursor-pointer items-center justify-between rounded-md px-2 text-sm text-accent-foreground transition-colors hover:bg-accent',
+                'group relative flex h-9 shrink-0 cursor-pointer items-center justify-between rounded-md px-2 text-sm text-accent-foreground transition-colors hover:bg-accent',
                 {
                     'bg-main font-bold text-background hover:bg-main': active && !editing,
                     'cursor-text hover:bg-accent hover:pr-1': editing,
@@ -150,7 +151,12 @@ export default memo(function PracticeSubject({ node, deep = 0, active, editing, 
             )}
             style={{ paddingLeft: deep * 16 + 8 + 'px' }}
         >
-            <span className='overflow-hidden text-nowrap text-ellipsis whitespace-nowrap'>{node.title}</span>
+            {deep === 1 && !active && (
+                <span className='absolute top-0 left-0 flex h-full w-7 items-center justify-center'>
+                    <span className='h-[5px] w-[5px] rounded-full bg-accent-foreground' />
+                </span>
+            )}
+            <p className='overflow-hidden text-nowrap text-ellipsis whitespace-nowrap'>{node.title}</p>
 
             {editing && (
                 <div className='hidden shrink-0 items-center gap-1 group-hover:flex'>

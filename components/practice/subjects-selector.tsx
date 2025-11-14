@@ -2,7 +2,7 @@
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { Button } from '../common/button'
 import { usePracticeStore } from '@/store/practice'
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { flattenSubjectsTree } from '@/lib/utils'
 import Subject from './subject'
 
@@ -13,7 +13,7 @@ interface Props {
     onSelect: (title: string) => void
 }
 export function SubjectSelector({ open, selectedSubjects, onOpenChange, onSelect }: Props) {
-    const overviewData = usePracticeStore(s => s.overviewData)
+    const overviewData = usePracticeStore(s => s.selectingPracticeSetData!.overview)
 
     const flatNodes = useMemo(() => {
         if (!overviewData) {

@@ -8,7 +8,7 @@ import { motion } from 'motion/react'
 import { usePracticeStore } from '@/store/practice'
 
 export function PracticeList() {
-    const data = usePracticeStore(s => s.data)
+    const data = usePracticeStore(s => s.selectingPracticeSetData!.set)
 
     return (
         <>

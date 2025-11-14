@@ -3,14 +3,15 @@
 import PracticeSubject from './subject'
 import { useMemo, useState } from 'react'
 import { MovableDivider } from '../common/movable-divider'
-import { OverviewData, usePracticeStore } from '@/store/practice'
+import { usePracticeStore } from '@/store/practice'
 import { Button } from '../common/button'
 import { ListPlusIcon } from '@phosphor-icons/react'
 import { flattenSubjectsTree } from '@/lib/utils'
+import { OverviewData } from '@/store/interface'
 
 export function PracticeOverview() {
     const selectedSubject = usePracticeStore(s => s.selectingSubject)
-    const overviewData = usePracticeStore(s => s.overviewData)
+    const overviewData = usePracticeStore(s => s.selectingPracticeSetData!.overview)
     const editing = usePracticeStore(s => s.editing)
 
     const { selectSubject, setOverviewData } = usePracticeStore(s => s.actions)
@@ -39,17 +40,16 @@ export function PracticeOverview() {
 
     return (
         <>
-            <div className='relative flex h-full shrink-0 flex-col overflow-auto px-4' style={{ width: width + 'px' }}>
-                <div className='sticky top-0 left-0 mb-2 flex h-10 shrink-0 items-center bg-zinc-50 pl-2 font-semibold'>
+            <div className='relative flex h-full shrink-0 flex-col overflow-auto px-4 pb-8' style={{ width: width + 'px' }}>
+                <div className='sticky top-0 left-0 mb-2 flex h-10 shrink-0 items-center border-b bg-zinc-50 z-10 pb-2 pl-2 font-semibold'>
                     目录
                     {editing && (
                         <Button onClick={handleAddRootNode} className='ml-auto font-medium'>
                             <ListPlusIcon size={18} />
-                            添加新章节
+                            添加新专题
                         </Button>
                     )}
                 </div>
-                <div className='mb-2 h-px bg-border'></div>
                 {flatNodes.map(node => (
                     <PracticeSubject
                         key={node.title}

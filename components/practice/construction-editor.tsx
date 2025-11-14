@@ -2,7 +2,7 @@
 
 import { memo } from 'react'
 import { ConstructionHeader } from './construction-header'
-import { ChunkData } from '@/store/practice'
+import { ChunkData } from '@/store/interface'
 import { cn } from '@/lib/utils'
 
 interface Props {
