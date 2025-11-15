@@ -1,2393 +1,3867 @@
 {
-    "id": "math1",
-    "title": "考研数学一真题卷",
-    "overview": [
+  "id": "math1",
+  "title": "考研数学一真题卷",
+  "overview": [
+    {
+      "children": [
         {
-            "children": [
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "数列敛散性的判定"
-                        },
-                        {
-                            "children": [],
-                            "title": "函数极限的计算"
-                        },
-                        {
-                            "children": [],
-                            "title": "确定极限中的参数"
-                        },
-                        {
-                            "children": [],
-                            "title": "无穷小量的比较"
-                        },
-                        {
-                            "children": [],
-                            "title": "函数的连续性"
-                        }
-                    ],
-                    "title": "函数、极限、连续"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "导数与微分的概念"
-                        },
-                        {
-                            "children": [],
-                            "title": "导数与微分的计算"
-                        },
-                        {
-                            "children": [],
-                            "title": "导数的几何意义"
-                        },
-                        {
-                            "children": [],
-                            "title": "函数的单调性、极值与最值"
-                        },
-                        {
-                            "children": [],
-                            "title": "曲线的凹凸性、拐点及渐近线"
-                        },
-                        {
-                            "children": [],
-                            "title": "方程根的存在性与个数"
-                        },
-                        {
-                            "children": [],
-                            "title": "不等式的证明"
-                        },
-                        {
-                            "children": [],
-                            "title": "微分中值定理"
-                        },
-                        {
-                            "children": [],
-                            "title": "泰勒公式"
-                        }
-                    ],
-                    "title": "一元函数微分学"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "不定积分的计算"
-                        },
-                        {
-                            "children": [],
-                            "title": "定积分的概念、性质及几何意义"
-                        },
-                        {
-                            "children": [],
-                            "title": "定积分的计算"
-                        },
-                        {
-                            "children": [],
-                            "title": "变限积分"
-                        },
-                        {
-                            "children": [],
-                            "title": "反常积分的计算与敛散性"
-                        },
-                        {
-                            "children": [],
-                            "title": "定积分的应用"
-                        }
-                    ],
-                    "title": "一元函数积分学"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "偏导数的概念与计算"
-                        },
-                        {
-                            "children": [],
-                            "title": "全微分的概念与计算"
-                        },
-                        {
-                            "children": [],
-                            "title": "多元函数微分学的几何应用"
-                        },
-                        {
-                            "children": [],
-                            "title": "方向导数和梯度"
-                        },
-                        {
-                            "children": [],
-                            "title": "多元函数的极值问题"
-                        }
-                    ],
-                    "title": "多元函数微分学"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "重积分的概念与性质"
-                        },
-                        {
-                            "children": [],
-                            "title": "交换积分次序与坐标系之间的转化"
-                        },
-                        {
-                            "children": [],
-                            "title": "重积分的计算"
-                        },
-                        {
-                            "children": [],
-                            "title": "重积分的应用"
-                        },
-                        {
-                            "children": [],
-                            "title": "第一类曲线积分"
-                        },
-                        {
-                            "children": [],
-                            "title": "第二类曲线积分"
-                        },
-                        {
-                            "children": [],
-                            "title": "第一类曲面积分"
-                        },
-                        {
-                            "children": [],
-                            "title": "第二类曲面积分"
-                        },
-                        {
-                            "children": [],
-                            "title": "旋度的定义"
-                        }
-                    ],
-                    "title": "多元函数积分学"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "常数项级数敛散性的判定"
-                        },
-                        {
-                            "children": [],
-                            "title": "求幂级数的收敛半径、收敛区间和收敛域"
-                        },
-                        {
-                            "children": [],
-                            "title": "幂级数的和函数及幂级数展开式"
-                        },
-                        {
-                            "children": [],
-                            "title": "傅里叶级数"
-                        }
-                    ],
-                    "title": "无穷级数"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "线性微分方程的解的结构"
-                        },
-                        {
-                            "children": [],
-                            "title": "可分离变量的微分方程与齐次方程"
-                        },
-                        {
-                            "children": [],
-                            "title": "一阶非齐次线性微分方程"
-                        },
-                        {
-                            "children": [],
-                            "title": "常系数齐次线性微分方程"
-                        },
-                        {
-                            "children": [],
-                            "title": "常系数非齐次线性微分方程"
-                        },
-                        {
-                            "children": [],
-                            "title": "其他方程"
-                        },
-                        {
-                            "children": [],
-                            "title": "微分方程的应用"
-                        }
-                    ],
-                    "title": "常微分方程"
-                }
-            ],
-            "title": "高等数学"
+          "children": [
+            {
+              "children": [],
+              "title": "数列敛散性的判定"
+            },
+            {
+              "children": [],
+              "title": "函数极限的计算"
+            },
+            {
+              "children": [],
+              "title": "确定极限中的参数"
+            },
+            {
+              "children": [],
+              "title": "无穷小量的比较"
+            },
+            {
+              "children": [],
+              "title": "函数的连续性"
+            }
+          ],
+          "title": "函数、极限、连续"
         },
         {
-            "children": [
-                {
-                    "children": [],
-                    "title": "行列式"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "矩阵的运算与变换"
-                        },
-                        {
-                            "children": [],
-                            "title": "伴随矩阵与可逆矩阵"
-                        },
-                        {
-                            "children": [],
-                            "title": "矩阵的秩"
-                        }
-                    ],
-                    "title": "矩阵"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "向量组的线性相关性"
-                        },
-                        {
-                            "children": [],
-                            "title": "向量组之间的线性表示"
-                        },
-                        {
-                            "children": [],
-                            "title": "向量内积与向量正交"
-                        }
-                    ],
-                    "title": "向量"
-                },
-                {
-                    "children": [],
-                    "title": "线性方程组"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "特征值与特征向量"
-                        },
-                        {
-                            "children": [],
-                            "title": "矩阵的相似与相似对角化"
-                        }
-                    ],
-                    "title": "矩阵的特征值与特征向量"
-                },
-                {
-                    "children": [],
-                    "title": "二次型"
-                }
-            ],
-            "title": "线性代数"
+          "children": [
+            {
+              "children": [],
+              "title": "导数与微分的概念"
+            },
+            {
+              "children": [],
+              "title": "导数与微分的计算"
+            },
+            {
+              "children": [],
+              "title": "导数的几何意义"
+            },
+            {
+              "children": [],
+              "title": "函数的单调性、极值与最值"
+            },
+            {
+              "children": [],
+              "title": "曲线的凹凸性、拐点及渐近线"
+            },
+            {
+              "children": [],
+              "title": "方程根的存在性与个数"
+            },
+            {
+              "children": [],
+              "title": "不等式的证明"
+            },
+            {
+              "children": [],
+              "title": "微分中值定理"
+            },
+            {
+              "children": [],
+              "title": "泰勒公式"
+            }
+          ],
+          "title": "一元函数微分学"
         },
         {
-            "children": [
-                {
-                    "children": [],
-                    "title": "随机事件和概率"
-                },
-                {
-                    "children": [],
-                    "title": "随机变量及其分布"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "二维随机变量及其分布"
-                        },
-                        {
-                            "children": [],
-                            "title": "边缘分布和条件分布"
-                        }
-                    ],
-                    "title": "多维随机变量及其分布"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "数学期望与方差"
-                        },
-                        {
-                            "children": [],
-                            "title": "协方差与相关系数"
-                        }
-                    ],
-                    "title": "随机变量的数字特征"
-                },
-                {
-                    "children": [],
-                    "title": "大数定律和中心极限定理"
-                },
-                {
-                    "children": [],
-                    "title": "数理统计的基本概念"
-                },
-                {
-                    "children": [
-                        {
-                            "children": [],
-                            "title": "估计量的无偏性"
-                        },
-                        {
-                            "children": [],
-                            "title": "矩估计和最大似然估计"
-                        },
-                        {
-                            "children": [],
-                            "title": "区间估计和置信区间"
-                        },
-                        {
-                            "children": [],
-                            "title": "假设检验"
-                        }
-                    ],
-                    "title": "参数估计与假设检验"
-                }
-            ],
-            "title": "概率论与数理统计"
+          "children": [
+            {
+              "children": [],
+              "title": "不定积分的计算"
+            },
+            {
+              "children": [],
+              "title": "定积分的概念、性质及几何意义"
+            },
+            {
+              "children": [],
+              "title": "定积分的计算"
+            },
+            {
+              "children": [],
+              "title": "变限积分"
+            },
+            {
+              "children": [],
+              "title": "反常积分的计算与敛散性"
+            },
+            {
+              "children": [],
+              "title": "定积分的应用"
+            }
+          ],
+          "title": "一元函数积分学"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "title": "偏导数的概念与计算"
+            },
+            {
+              "children": [],
+              "title": "全微分的概念与计算"
+            },
+            {
+              "children": [],
+              "title": "多元函数微分学的几何应用"
+            },
+            {
+              "children": [],
+              "title": "方向导数和梯度"
+            },
+            {
+              "children": [],
+              "title": "多元函数的极值问题"
+            }
+          ],
+          "title": "多元函数微分学"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "title": "重积分的概念与性质"
+            },
+            {
+              "children": [],
+              "title": "交换积分次序与坐标系之间的转化"
+            },
+            {
+              "children": [],
+              "title": "重积分的计算"
+            },
+            {
+              "children": [],
+              "title": "重积分的应用"
+            },
+            {
+              "children": [],
+              "title": "第一类曲线积分"
+            },
+            {
+              "children": [],
+              "title": "第二类曲线积分"
+            },
+            {
+              "children": [],
+              "title": "第一类曲面积分"
+            },
+            {
+              "children": [],
+              "title": "第二类曲面积分"
+            },
+            {
+              "children": [],
+              "title": "旋度的定义"
+            }
+          ],
+          "title": "多元函数积分学"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "title": "常数项级数敛散性的判定"
+            },
+            {
+              "children": [],
+              "title": "求幂级数的收敛半径、收敛区间和收敛域"
+            },
+            {
+              "children": [],
+              "title": "幂级数的和函数及幂级数展开式"
+            },
+            {
+              "children": [],
+              "title": "傅里叶级数"
+            }
+          ],
+          "title": "无穷级数"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "title": "线性微分方程的解的结构"
+            },
+            {
+              "children": [],
+              "title": "可分离变量的微分方程与齐次方程"
+            },
+            {
+              "children": [],
+              "title": "一阶非齐次线性微分方程"
+            },
+            {
+              "children": [],
+              "title": "常系数齐次线性微分方程"
+            },
+            {
+              "children": [],
+              "title": "常系数非齐次线性微分方程"
+            },
+            {
+              "children": [],
+              "title": "其他方程"
+            },
+            {
+              "children": [],
+              "title": "微分方程的应用"
+            }
+          ],
+          "title": "常微分方程"
         }
-    ],
-    "set": [
+      ],
+      "title": "高等数学"
+    },
+    {
+      "children": [
         {
-            "id": "2025",
-            "title": "2025年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2025/22.png"
-                }
-            ]
+          "children": [],
+          "title": "行列式"
         },
         {
-            "id": "2024",
-            "title": "2024年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2024/22.png"
-                }
-            ]
+          "children": [
+            {
+              "children": [],
+              "title": "矩阵的运算与变换"
+            },
+            {
+              "children": [],
+              "title": "伴随矩阵与可逆矩阵"
+            },
+            {
+              "children": [],
+              "title": "矩阵的秩"
+            }
+          ],
+          "title": "矩阵"
         },
         {
-            "id": "2023",
-            "title": "2023年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2023/22.png"
-                }
-            ]
+          "children": [
+            {
+              "children": [],
+              "title": "向量组的线性相关性"
+            },
+            {
+              "children": [],
+              "title": "向量组之间的线性表示"
+            },
+            {
+              "children": [],
+              "title": "向量内积与向量正交"
+            }
+          ],
+          "title": "向量"
         },
         {
-            "id": "2022",
-            "title": "2022年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2022/22.png"
-                }
-            ]
+          "children": [],
+          "title": "线性方程组"
         },
         {
-            "id": "2021",
-            "title": "2021年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2021/22.png"
-                }
-            ]
+          "children": [
+            {
+              "children": [],
+              "title": "特征值与特征向量"
+            },
+            {
+              "children": [],
+              "title": "矩阵的相似与相似对角化"
+            }
+          ],
+          "title": "矩阵的特征值与特征向量"
         },
         {
-            "id": "2020",
-            "title": "2020年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2020/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2019",
-            "title": "2019年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2019/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2018",
-            "title": "2018年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2018/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2017",
-            "title": "2017年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2017/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2016",
-            "title": "2016年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2016/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2015",
-            "title": "2015年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2015/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2014",
-            "title": "2014年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2014/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2013",
-            "title": "2013年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2013/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2012",
-            "title": "2012年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2012/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2011",
-            "title": "2011年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2011/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2010",
-            "title": "2010年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2010/23.png"
-                }
-            ]
-        },
-        {
-            "id": "2009",
-            "title": "2009年",
-            "chunks": [
-                {
-                    "id": "1",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/1.png"
-                },
-                {
-                    "id": "2",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/2.png"
-                },
-                {
-                    "id": "3",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/3.png"
-                },
-                {
-                    "id": "4",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/4.png"
-                },
-                {
-                    "id": "5",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/5.png"
-                },
-                {
-                    "id": "6",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/6.png"
-                },
-                {
-                    "id": "7",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/7.png"
-                },
-                {
-                    "id": "8",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/8.png"
-                },
-                {
-                    "id": "9",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/9.png"
-                },
-                {
-                    "id": "10",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/10.png"
-                },
-                {
-                    "id": "11",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/11.png"
-                },
-                {
-                    "id": "12",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/12.png"
-                },
-                {
-                    "id": "13",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/13.png"
-                },
-                {
-                    "id": "14",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/14.png"
-                },
-                {
-                    "id": "15",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/15.png"
-                },
-                {
-                    "id": "16",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/16.png"
-                },
-                {
-                    "id": "17",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/17.png"
-                },
-                {
-                    "id": "18",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/18.png"
-                },
-                {
-                    "id": "19",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/19.png"
-                },
-                {
-                    "id": "20",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/20.png"
-                },
-                {
-                    "id": "21",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/21.png"
-                },
-                {
-                    "id": "22",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/22.png"
-                },
-                {
-                    "id": "23",
-                    "subjects": [],
-                    "source": "/practices/math1/2009/23.png"
-                }
-            ]
+          "children": [],
+          "title": "二次型"
         }
-    ],
-    "updatedAt": "2025-11-14"
+      ],
+      "title": "线性代数"
+    },
+    {
+      "children": [
+        {
+          "children": [],
+          "title": "随机事件和概率"
+        },
+        {
+          "children": [],
+          "title": "随机变量及其分布"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "title": "二维随机变量及其分布"
+            },
+            {
+              "children": [],
+              "title": "边缘分布和条件分布"
+            }
+          ],
+          "title": "多维随机变量及其分布"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "title": "数学期望与方差"
+            },
+            {
+              "children": [],
+              "title": "协方差与相关系数"
+            }
+          ],
+          "title": "随机变量的数字特征"
+        },
+        {
+          "children": [],
+          "title": "大数定律和中心极限定理"
+        },
+        {
+          "children": [],
+          "title": "数理统计的基本概念"
+        },
+        {
+          "children": [
+            {
+              "children": [],
+              "title": "估计量的无偏性"
+            },
+            {
+              "children": [],
+              "title": "矩估计和最大似然估计"
+            },
+            {
+              "children": [],
+              "title": "区间估计和置信区间"
+            },
+            {
+              "children": [],
+              "title": "假设检验"
+            }
+          ],
+          "title": "参数估计与假设检验"
+        }
+      ],
+      "title": "概率论与数理统计"
+    }
+  ],
+  "set": [
+    {
+      "id": "2025",
+      "title": "2025年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "曲线的凹凸性、拐点及渐近线"
+          ],
+          "source": "/practices/math1/2025/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "常数项级数敛散性的判定"
+          ],
+          "source": "/practices/math1/2025/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的概念"
+          ],
+          "source": "/practices/math1/2025/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "交换积分次序与坐标系之间的转化"
+          ],
+          "source": "/practices/math1/2025/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2025/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2025/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的秩"
+          ],
+          "source": "/practices/math1/2025/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2025/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2025/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "假设检验"
+          ],
+          "source": "/practices/math1/2025/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "函数极限的计算"
+          ],
+          "source": "/practices/math1/2025/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "傅里叶级数"
+          ],
+          "source": "/practices/math1/2025/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "方向导数和梯度"
+          ],
+          "source": "/practices/math1/2025/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2025/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2025/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2025/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的计算"
+          ],
+          "source": "/practices/math1/2025/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "一阶非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2025/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "微分中值定理"
+          ],
+          "source": "/practices/math1/2025/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2025/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "特征值与特征向量"
+          ],
+          "source": "/practices/math1/2025/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "边缘分布和条件分布"
+          ],
+          "source": "/practices/math1/2025/22.png"
+        }
+      ]
+    },
+    {
+      "id": "2024",
+      "title": "2024年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "变限积分"
+          ],
+          "source": "/practices/math1/2024/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2024/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2024/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的概念"
+          ],
+          "source": "/practices/math1/2024/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2024/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量组的线性相关性"
+          ],
+          "source": "/practices/math1/2024/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "特征值与特征向量"
+          ],
+          "source": "/practices/math1/2024/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2024/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2024/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "二维随机变量及其分布"
+          ],
+          "source": "/practices/math1/2024/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "确定极限中的参数"
+          ],
+          "source": "/practices/math1/2024/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "偏导数的概念与计算"
+          ],
+          "source": "/practices/math1/2024/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "傅里叶级数"
+          ],
+          "source": "/practices/math1/2024/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "其他方程"
+          ],
+          "source": "/practices/math1/2024/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2024/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2024/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的计算"
+          ],
+          "source": "/practices/math1/2024/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2024/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "泰勒公式"
+          ],
+          "source": "/practices/math1/2024/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2024/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2024/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "估计量的无偏性"
+          ],
+          "source": "/practices/math1/2024/22.png"
+        }
+      ]
+    },
+    {
+      "id": "2023",
+      "title": "2023年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "曲线的凹凸性、拐点及渐近线"
+          ],
+          "source": "/practices/math1/2023/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "常系数齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2023/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的概念"
+          ],
+          "source": "/practices/math1/2023/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "常数项级数敛散性的判定"
+          ],
+          "source": "/practices/math1/2023/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的秩"
+          ],
+          "source": "/practices/math1/2023/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2023/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量组之间的线性表示"
+          ],
+          "source": "/practices/math1/2023/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2023/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "概率论与数理统计",
+            "数理统计的基本概念"
+          ],
+          "source": "/practices/math1/2023/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "估计量的无偏性"
+          ],
+          "source": "/practices/math1/2023/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "确定极限中的参数"
+          ],
+          "source": "/practices/math1/2023/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数微分学的几何应用"
+          ],
+          "source": "/practices/math1/2023/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "傅里叶级数"
+          ],
+          "source": "/practices/math1/2023/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的计算"
+          ],
+          "source": "/practices/math1/2023/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量内积与向量正交"
+          ],
+          "source": "/practices/math1/2023/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2023/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "微分方程的应用"
+          ],
+          "source": "/practices/math1/2023/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2023/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2023/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "泰勒公式"
+          ],
+          "source": "/practices/math1/2023/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2023/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2023/22.png"
+        }
+      ]
+    },
+    {
+      "id": "2022",
+      "title": "2022年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的概念"
+          ],
+          "source": "/practices/math1/2022/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "偏导数的概念与计算"
+          ],
+          "source": "/practices/math1/2022/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "数列敛散性的判定"
+          ],
+          "source": "/practices/math1/2022/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的概念、性质及几何意义"
+          ],
+          "source": "/practices/math1/2022/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2022/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2022/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量组之间的线性表示"
+          ],
+          "source": "/practices/math1/2022/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2022/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "概率论与数理统计",
+            "大数定律和中心极限定理"
+          ],
+          "source": "/practices/math1/2022/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2022/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "方向导数和梯度"
+          ],
+          "source": "/practices/math1/2022/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的计算"
+          ],
+          "source": "/practices/math1/2022/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2022/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "求幂级数的收敛半径、收敛区间和收敛域"
+          ],
+          "source": "/practices/math1/2022/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的运算与变换"
+          ],
+          "source": "/practices/math1/2022/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2022/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "一阶非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2022/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的计算"
+          ],
+          "source": "/practices/math1/2022/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2022/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "曲线的凹凸性、拐点及渐近线"
+          ],
+          "source": "/practices/math1/2022/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2022/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2022/22.png"
+        }
+      ]
+    },
+    {
+      "id": "2021",
+      "title": "2021年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的概念"
+          ],
+          "source": "/practices/math1/2021/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "全微分的概念与计算"
+          ],
+          "source": "/practices/math1/2021/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "泰勒公式"
+          ],
+          "source": "/practices/math1/2021/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的概念、性质及几何意义"
+          ],
+          "source": "/practices/math1/2021/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2021/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量内积与向量正交"
+          ],
+          "source": "/practices/math1/2021/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的秩"
+          ],
+          "source": "/practices/math1/2021/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2021/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "估计量的无偏性"
+          ],
+          "source": "/practices/math1/2021/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "假设检验"
+          ],
+          "source": "/practices/math1/2021/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "反常积分的计算与敛散性"
+          ],
+          "source": "/practices/math1/2021/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的计算"
+          ],
+          "source": "/practices/math1/2021/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "其他方程"
+          ],
+          "source": "/practices/math1/2021/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2021/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "线性代数",
+            "行列式"
+          ],
+          "source": "/practices/math1/2021/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2021/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "函数极限的计算"
+          ],
+          "source": "/practices/math1/2021/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2021/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2021/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2021/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2021/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2021/22.png"
+        }
+      ]
+    },
+    {
+      "id": "2020",
+      "title": "2020年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "无穷小量的比较"
+          ],
+          "source": "/practices/math1/2020/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的概念"
+          ],
+          "source": "/practices/math1/2020/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "全微分的概念与计算"
+          ],
+          "source": "/practices/math1/2020/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "求幂级数的收敛半径、收敛区间和收敛域"
+          ],
+          "source": "/practices/math1/2020/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的运算与变换"
+          ],
+          "source": "/practices/math1/2020/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量组之间的线性表示"
+          ],
+          "source": "/practices/math1/2020/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2020/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "大数定律和中心极限定理"
+          ],
+          "source": "/practices/math1/2020/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "函数极限的计算"
+          ],
+          "source": "/practices/math1/2020/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的计算"
+          ],
+          "source": "/practices/math1/2020/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "常系数齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2020/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "偏导数的概念与计算"
+          ],
+          "source": "/practices/math1/2020/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "行列式"
+          ],
+          "source": "/practices/math1/2020/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2020/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2020/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2020/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2020/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2020/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [],
+          "source": "/practices/math1/2020/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2020/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2020/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "二维随机变量及其分布"
+          ],
+          "source": "/practices/math1/2020/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2020/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2019",
+      "title": "2019年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "确定极限中的参数"
+          ],
+          "source": "/practices/math1/2019/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "函数的单调性、极值与最值"
+          ],
+          "source": "/practices/math1/2019/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "常数项级数敛散性的判定"
+          ],
+          "source": "/practices/math1/2019/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2019/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2019/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2019/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2019/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2019/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "偏导数的概念与计算"
+          ],
+          "source": "/practices/math1/2019/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "可分离变量的微分方程与齐次方程"
+          ],
+          "source": "/practices/math1/2019/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2019/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2019/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2019/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2019/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "一阶非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2019/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "方向导数和梯度"
+          ],
+          "source": "/practices/math1/2019/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的应用"
+          ],
+          "source": "/practices/math1/2019/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "数列敛散性的判定"
+          ],
+          "source": "/practices/math1/2019/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的应用"
+          ],
+          "source": "/practices/math1/2019/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量内积与向量正交"
+          ],
+          "source": "/practices/math1/2019/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2019/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "二维随机变量及其分布"
+          ],
+          "source": "/practices/math1/2019/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2019/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2018",
+      "title": "2018年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的概念"
+          ],
+          "source": "/practices/math1/2018/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数微分学的几何应用"
+          ],
+          "source": "/practices/math1/2018/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2018/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的概念、性质及几何意义"
+          ],
+          "source": "/practices/math1/2018/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2018/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的秩"
+          ],
+          "source": "/practices/math1/2018/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2018/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "假设检验"
+          ],
+          "source": "/practices/math1/2018/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "确定极限中的参数"
+          ],
+          "source": "/practices/math1/2018/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数的几何意义"
+          ],
+          "source": "/practices/math1/2018/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "旋度的定义"
+          ],
+          "source": "/practices/math1/2018/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第一类曲线积分"
+          ],
+          "source": "/practices/math1/2018/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "特征值与特征向量"
+          ],
+          "source": "/practices/math1/2018/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2018/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "不定积分的计算"
+          ],
+          "source": "/practices/math1/2018/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2018/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2018/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "一阶非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2018/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "数列敛散性的判定"
+          ],
+          "source": "/practices/math1/2018/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2018/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2018/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2018/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2018/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2017",
+      "title": "2017年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "函数的连续性"
+          ],
+          "source": "/practices/math1/2017/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "函数的单调性、极值与最值"
+          ],
+          "source": "/practices/math1/2017/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "方向导数和梯度"
+          ],
+          "source": "/practices/math1/2017/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的应用"
+          ],
+          "source": "/practices/math1/2017/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "伴随矩阵与可逆矩阵"
+          ],
+          "source": "/practices/math1/2017/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2017/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2017/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "数理统计的基本概念"
+          ],
+          "source": "/practices/math1/2017/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的计算"
+          ],
+          "source": "/practices/math1/2017/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "常系数齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2017/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2017/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2017/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的秩"
+          ],
+          "source": "/practices/math1/2017/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2017/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "偏导数的概念与计算"
+          ],
+          "source": "/practices/math1/2017/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的概念、性质及几何意义"
+          ],
+          "source": "/practices/math1/2017/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "函数的单调性、极值与最值"
+          ],
+          "source": "/practices/math1/2017/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "方程根的存在性与个数"
+          ],
+          "source": "/practices/math1/2017/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第一类曲面积分"
+          ],
+          "source": "/practices/math1/2017/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2017/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2017/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2017/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2017/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2016",
+      "title": "2016年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "反常积分的计算与敛散性"
+          ],
+          "source": "/practices/math1/2016/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "不定积分的计算"
+          ],
+          "source": "/practices/math1/2016/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "一阶非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2016/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的概念"
+          ],
+          "source": "/practices/math1/2016/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2016/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2016/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2016/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2016/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "函数极限的计算"
+          ],
+          "source": "/practices/math1/2016/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "旋度的定义"
+          ],
+          "source": "/practices/math1/2016/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "全微分的概念与计算"
+          ],
+          "source": "/practices/math1/2016/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的计算"
+          ],
+          "source": "/practices/math1/2016/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "行列式"
+          ],
+          "source": "/practices/math1/2016/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "区间估计和置信区间"
+          ],
+          "source": "/practices/math1/2016/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的计算"
+          ],
+          "source": "/practices/math1/2016/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "常系数齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2016/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2016/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2016/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "常数项级数敛散性的判定"
+          ],
+          "source": "/practices/math1/2016/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2016/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2016/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "二维随机变量及其分布"
+          ],
+          "source": "/practices/math1/2016/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "估计量的无偏性"
+          ],
+          "source": "/practices/math1/2016/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2015",
+      "title": "2015年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "曲线的凹凸性、拐点及渐近线"
+          ],
+          "source": "/practices/math1/2015/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "常系数非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2015/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "求幂级数的收敛半径、收敛区间和收敛域"
+          ],
+          "source": "/practices/math1/2015/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "交换积分次序与坐标系之间的转化"
+          ],
+          "source": "/practices/math1/2015/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2015/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2015/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2015/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2015/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "函数极限的计算"
+          ],
+          "source": "/practices/math1/2015/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的计算"
+          ],
+          "source": "/practices/math1/2015/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "全微分的概念与计算"
+          ],
+          "source": "/practices/math1/2015/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的计算"
+          ],
+          "source": "/practices/math1/2015/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "行列式"
+          ],
+          "source": "/practices/math1/2015/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "二维随机变量及其分布"
+          ],
+          "source": "/practices/math1/2015/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "确定极限中的参数"
+          ],
+          "source": "/practices/math1/2015/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "微分方程的应用"
+          ],
+          "source": "/practices/math1/2015/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2015/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的概念"
+          ],
+          "source": "/practices/math1/2015/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2015/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量内积与向量正交"
+          ],
+          "source": "/practices/math1/2015/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2015/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2015/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2015/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2014",
+      "title": "2014年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "曲线的凹凸性、拐点及渐近线"
+          ],
+          "source": "/practices/math1/2014/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "曲线的凹凸性、拐点及渐近线"
+          ],
+          "source": "/practices/math1/2014/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "交换积分次序与坐标系之间的转化"
+          ],
+          "source": "/practices/math1/2014/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的计算"
+          ],
+          "source": "/practices/math1/2014/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "行列式"
+          ],
+          "source": "/practices/math1/2014/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量组的线性相关性"
+          ],
+          "source": "/practices/math1/2014/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2014/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2014/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数微分学的几何应用"
+          ],
+          "source": "/practices/math1/2014/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的计算"
+          ],
+          "source": "/practices/math1/2014/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "可分离变量的微分方程与齐次方程"
+          ],
+          "source": "/practices/math1/2014/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2014/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2014/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "估计量的无偏性"
+          ],
+          "source": "/practices/math1/2014/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "函数极限的计算"
+          ],
+          "source": "/practices/math1/2014/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "函数的单调性、极值与最值"
+          ],
+          "source": "/practices/math1/2014/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "常系数非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2014/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2014/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "常数项级数敛散性的判定"
+          ],
+          "source": "/practices/math1/2014/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2014/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2014/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2014/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "大数定律和中心极限定理"
+          ],
+          "source": "/practices/math1/2014/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2013",
+      "title": "2013年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "确定极限中的参数"
+          ],
+          "source": "/practices/math1/2013/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数微分学的几何应用"
+          ],
+          "source": "/practices/math1/2013/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "傅里叶级数"
+          ],
+          "source": "/practices/math1/2013/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2013/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量组之间的线性表示"
+          ],
+          "source": "/practices/math1/2013/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2013/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2013/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "数理统计的基本概念"
+          ],
+          "source": "/practices/math1/2013/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的计算"
+          ],
+          "source": "/practices/math1/2013/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "线性微分方程的解的结构"
+          ],
+          "source": "/practices/math1/2013/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的计算"
+          ],
+          "source": "/practices/math1/2013/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "反常积分的计算与敛散性"
+          ],
+          "source": "/practices/math1/2013/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "伴随矩阵与可逆矩阵"
+          ],
+          "source": "/practices/math1/2013/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2013/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的计算"
+          ],
+          "source": "/practices/math1/2013/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2013/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2013/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "微分中值定理"
+          ],
+          "source": "/practices/math1/2013/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的应用"
+          ],
+          "source": "/practices/math1/2013/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2013/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2013/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "二维随机变量及其分布"
+          ],
+          "source": "/practices/math1/2013/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2013/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2012",
+      "title": "2012年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "曲线的凹凸性、拐点及渐近线"
+          ],
+          "source": "/practices/math1/2012/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的计算"
+          ],
+          "source": "/practices/math1/2012/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "全微分的概念与计算"
+          ],
+          "source": "/practices/math1/2012/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的概念、性质及几何意义"
+          ],
+          "source": "/practices/math1/2012/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量组的线性相关性"
+          ],
+          "source": "/practices/math1/2012/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的运算与变换"
+          ],
+          "source": "/practices/math1/2012/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "二维随机变量及其分布"
+          ],
+          "source": "/practices/math1/2012/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2012/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "常系数齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2012/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的计算"
+          ],
+          "source": "/practices/math1/2012/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "方向导数和梯度"
+          ],
+          "source": "/practices/math1/2012/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第一类曲面积分"
+          ],
+          "source": "/practices/math1/2012/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的秩"
+          ],
+          "source": "/practices/math1/2012/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "随机事件和概率"
+          ],
+          "source": "/practices/math1/2012/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "不等式的证明"
+          ],
+          "source": "/practices/math1/2012/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2012/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2012/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的应用"
+          ],
+          "source": "/practices/math1/2012/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2012/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2012/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2012/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2012/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2012/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2011",
+      "title": "2011年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "曲线的凹凸性、拐点及渐近线"
+          ],
+          "source": "/practices/math1/2011/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "求幂级数的收敛半径、收敛区间和收敛域"
+          ],
+          "source": "/practices/math1/2011/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2011/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的概念、性质及几何意义"
+          ],
+          "source": "/practices/math1/2011/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的运算与变换"
+          ],
+          "source": "/practices/math1/2011/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "伴随矩阵与可逆矩阵"
+          ],
+          "source": "/practices/math1/2011/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2011/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2011/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的应用"
+          ],
+          "source": "/practices/math1/2011/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "一阶非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2011/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "偏导数的概念与计算"
+          ],
+          "source": "/practices/math1/2011/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2011/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2011/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2011/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "函数极限的计算"
+          ],
+          "source": "/practices/math1/2011/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "偏导数的概念与计算"
+          ],
+          "source": "/practices/math1/2011/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "方程根的存在性与个数"
+          ],
+          "source": "/practices/math1/2011/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "数列敛散性的判定"
+          ],
+          "source": "/practices/math1/2011/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的计算"
+          ],
+          "source": "/practices/math1/2011/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量组之间的线性表示"
+          ],
+          "source": "/practices/math1/2011/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "特征值与特征向量"
+          ],
+          "source": "/practices/math1/2011/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "协方差与相关系数"
+          ],
+          "source": "/practices/math1/2011/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2011/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2010",
+      "title": "2010年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "函数极限的计算"
+          ],
+          "source": "/practices/math1/2010/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "偏导数的概念与计算"
+          ],
+          "source": "/practices/math1/2010/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "反常积分的计算与敛散性"
+          ],
+          "source": "/practices/math1/2010/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的概念与性质"
+          ],
+          "source": "/practices/math1/2010/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "矩阵的秩"
+          ],
+          "source": "/practices/math1/2010/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "矩阵的相似与相似对角化"
+          ],
+          "source": "/practices/math1/2010/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2010/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量及其分布"
+          ],
+          "source": "/practices/math1/2010/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "导数与微分的计算"
+          ],
+          "source": "/practices/math1/2010/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的计算"
+          ],
+          "source": "/practices/math1/2010/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲线积分"
+          ],
+          "source": "/practices/math1/2010/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的应用"
+          ],
+          "source": "/practices/math1/2010/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量内积与向量正交"
+          ],
+          "source": "/practices/math1/2010/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2010/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "常系数非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2010/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "函数的单调性、极值与最值"
+          ],
+          "source": "/practices/math1/2010/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的概念、性质及几何意义"
+          ],
+          "source": "/practices/math1/2010/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2010/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第一类曲面积分"
+          ],
+          "source": "/practices/math1/2010/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "线性方程组"
+          ],
+          "source": "/practices/math1/2010/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2010/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "边缘分布和条件分布"
+          ],
+          "source": "/practices/math1/2010/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "估计量的无偏性"
+          ],
+          "source": "/practices/math1/2010/23.png"
+        }
+      ]
+    },
+    {
+      "id": "2009",
+      "title": "2009年",
+      "chunks": [
+        {
+          "id": "1",
+          "subjects": [
+            "高等数学",
+            "函数、极限、连续",
+            "确定极限中的参数"
+          ],
+          "source": "/practices/math1/2009/1.png"
+        },
+        {
+          "id": "2",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的概念与性质"
+          ],
+          "source": "/practices/math1/2009/2.png"
+        },
+        {
+          "id": "3",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "变限积分"
+          ],
+          "source": "/practices/math1/2009/3.png"
+        },
+        {
+          "id": "4",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "常数项级数敛散性的判定"
+          ],
+          "source": "/practices/math1/2009/4.png"
+        },
+        {
+          "id": "5",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量内积与向量正交"
+          ],
+          "source": "/practices/math1/2009/5.png"
+        },
+        {
+          "id": "6",
+          "subjects": [
+            "线性代数",
+            "矩阵",
+            "伴随矩阵与可逆矩阵"
+          ],
+          "source": "/practices/math1/2009/6.png"
+        },
+        {
+          "id": "7",
+          "subjects": [
+            "概率论与数理统计",
+            "随机变量的数字特征",
+            "数学期望与方差"
+          ],
+          "source": "/practices/math1/2009/7.png"
+        },
+        {
+          "id": "8",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "二维随机变量及其分布"
+          ],
+          "source": "/practices/math1/2009/8.png"
+        },
+        {
+          "id": "9",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "偏导数的概念与计算"
+          ],
+          "source": "/practices/math1/2009/9.png"
+        },
+        {
+          "id": "10",
+          "subjects": [
+            "高等数学",
+            "常微分方程",
+            "常系数非齐次线性微分方程"
+          ],
+          "source": "/practices/math1/2009/10.png"
+        },
+        {
+          "id": "11",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第一类曲线积分"
+          ],
+          "source": "/practices/math1/2009/11.png"
+        },
+        {
+          "id": "12",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "重积分的计算"
+          ],
+          "source": "/practices/math1/2009/12.png"
+        },
+        {
+          "id": "13",
+          "subjects": [
+            "线性代数",
+            "矩阵的特征值与特征向量",
+            "特征值与特征向量"
+          ],
+          "source": "/practices/math1/2009/13.png"
+        },
+        {
+          "id": "14",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "估计量的无偏性"
+          ],
+          "source": "/practices/math1/2009/14.png"
+        },
+        {
+          "id": "15",
+          "subjects": [
+            "高等数学",
+            "多元函数微分学",
+            "多元函数的极值问题"
+          ],
+          "source": "/practices/math1/2009/15.png"
+        },
+        {
+          "id": "16",
+          "subjects": [
+            "高等数学",
+            "无穷级数",
+            "幂级数的和函数及幂级数展开式"
+          ],
+          "source": "/practices/math1/2009/16.png"
+        },
+        {
+          "id": "17",
+          "subjects": [
+            "高等数学",
+            "一元函数积分学",
+            "定积分的应用"
+          ],
+          "source": "/practices/math1/2009/17.png"
+        },
+        {
+          "id": "18",
+          "subjects": [
+            "高等数学",
+            "一元函数微分学",
+            "微分中值定理"
+          ],
+          "source": "/practices/math1/2009/18.png"
+        },
+        {
+          "id": "19",
+          "subjects": [
+            "高等数学",
+            "多元函数积分学",
+            "第二类曲面积分"
+          ],
+          "source": "/practices/math1/2009/19.png"
+        },
+        {
+          "id": "20",
+          "subjects": [
+            "线性代数",
+            "向量",
+            "向量组的线性相关性"
+          ],
+          "source": "/practices/math1/2009/20.png"
+        },
+        {
+          "id": "21",
+          "subjects": [
+            "线性代数",
+            "二次型"
+          ],
+          "source": "/practices/math1/2009/21.png"
+        },
+        {
+          "id": "22",
+          "subjects": [
+            "概率论与数理统计",
+            "多维随机变量及其分布",
+            "边缘分布和条件分布"
+          ],
+          "source": "/practices/math1/2009/22.png"
+        },
+        {
+          "id": "23",
+          "subjects": [
+            "概率论与数理统计",
+            "参数估计与假设检验",
+            "矩估计和最大似然估计"
+          ],
+          "source": "/practices/math1/2009/23.png"
+        }
+      ]
+    }
+  ],
+  "updatedAt": "2025-11-14"
 }
