@@ -37,7 +37,7 @@ export const usePracticeSetStore = create<Store>()((set, get) => ({
             await get().actions.loadPrivateData()
         },
         async updatePracticeSetTitle(id, title) {
-            await Repository.updatePracticeSetTitle(id, title)
+            await Repository.updatePracticeSetMeta(id, { title })
             await get().actions.loadPrivateData()
         },
     },
