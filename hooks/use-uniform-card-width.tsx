@@ -193,8 +193,6 @@ export function useUniformCardWidth<TData, TChunk>({
             // 计算图片容器可用的垂直空间
             const imageContainerHeight = containerHeight - layoutConstants.titleHeight - layoutConstants.cardPaddingBottom
 
-            
-
             if (imageContainerHeight <= 0) {
                 setFinalWidth(layoutConstants.maxWidth) // 回退
                 return
@@ -212,6 +210,6 @@ export function useUniformCardWidth<TData, TChunk>({
         containerRef: containerRef as RefObject<HTMLDivElement>,
         finalWidth,
         measuringRoom,
-        isCalculating: finalWidth === null,
+        isCalculating: finalWidth === null && data.length > 0,
     }
 }
