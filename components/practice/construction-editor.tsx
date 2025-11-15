@@ -4,6 +4,7 @@ import { memo } from 'react'
 import { ConstructionHeader } from './construction-header'
 import { ChunkData } from '@/store/interface'
 import { cn } from '@/lib/utils'
+import ImageRenderer from '../common/image-renderer'
 
 interface Props {
     title: string
@@ -19,7 +20,7 @@ export default memo(function ConstructionEditor({ title, chunks, selectedChunk, 
                 <div className='relative bg-card shadow-xl'>
                     {chunks.map(chunk => (
                         <div key={chunk.id} className='group relative w-full'>
-                            <img src={chunk.source} className='w-full' alt='chunk' />
+                            <ImageRenderer src={chunk.source} className='w-full' alt='chunk' />
                             <div
                                 className={cn(
                                     'absolute inset-0 hidden cursor-pointer border-2 border-main group-hover:block',

@@ -49,6 +49,7 @@ function DialogContent({
             >
                 <VisuallyHidden.Root>
                     <DialogPrimitive.Title>playground</DialogPrimitive.Title>
+                    <DialogPrimitive.Description>play practice</DialogPrimitive.Description>
                 </VisuallyHidden.Root>
                 {children}
                 <DialogPrimitive.Close asChild data-slot='dialog-close'>

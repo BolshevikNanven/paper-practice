@@ -16,20 +16,19 @@ import { SubjectSelector } from './subjects-selector'
 import { deepClone } from '@/lib/utils'
 import { ChunkData } from '@/store/interface'
 import { ConstructionPreviewer } from './construction-previewer'
+import ImageRenderer from '../common/image-renderer'
+import { useDialog } from '../common/confirm-dialog'
 
 export function PracticeConstruction() {
     const constructing = usePracticeStore(s => s.constructing)
     const practiceData = usePracticeStore(s => s.selectingPracticeSetData!.set)
+    const { deletePractice, createPractice, updatePractice } = usePracticeStore(s => s.actions)
 
     const practice = useMemo(() => practiceData.find(it => it.id === constructing), [constructing, practiceData])
+    const isNew = practice === undefined
 
     // 创建chunks副本
-    const initialChunks = useMemo(() => {
-        if (practice && practice.chunks) {
-            return deepClone(practice.chunks)
-        }
-        return []
-    }, [practice])
+    const initialChunks = useMemo(() => (practice && practice.chunks ? deepClone(practice.chunks) : []), [practice])
     const [chunks, setChunks] = useState<ChunkData[]>(initialChunks)
 
     const [selectedChunkId, setSelectedChunkId] = useState<string>()
@@ -38,6 +37,8 @@ export function PracticeConstruction() {
     const [previewerOpen, setPreviewerOpen] = useState(false)
     const [selectorOpen, setSelectorOpen] = useState(false)
     const creatorRef = useRef<ConstructionCreatorRef>(null)
+
+    const dialog = useDialog()
 
     function handleSelectChunk(id: string) {
         setSelectedChunkId(id)
@@ -48,10 +49,10 @@ export function PracticeConstruction() {
         setChunks(chunks => chunks.map(chunk => (chunk.id === selectedChunkId ? updater(chunk) : chunk)))
     }
 
-    function handleChangeAnswerType(value: string) {
+    function handleChangeAnswerType(type: string) {
         updateSelectedChunk(chunk => ({
             ...chunk,
-            answer: { type: value as 'pic' | 'text', value: '' },
+            answer: { type: type as 'pic' | 'text', value: '' },
         }))
     }
 
@@ -65,10 +66,9 @@ export function PracticeConstruction() {
 
     function handleSelectAnswerPic(files: FileList) {
         const file = files[0]
-        const url = URL.createObjectURL(file)
         updateSelectedChunk(chunk => ({
             ...chunk,
-            answer: { type: 'pic', value: url },
+            answer: { type: 'pic', value: file },
         }))
     }
 
@@ -106,7 +106,31 @@ export function PracticeConstruction() {
         setPreviewerOpen(true)
     }
 
-    function handleSave(title: string) {}
+    async function handleSave(title: string) {
+        if (isNew) {
+            await createPractice({
+                id: '',
+                title,
+                chunks: chunks,
+            })
+            return
+        }
+
+        await updatePractice({ ...practice, title, chunks: chunks })
+    }
+
+    async function handleDelete() {
+        if (isNew) {
+            return
+        }
+        dialog({
+            title: `确认要删除 ${practice.title} 吗`,
+            description: '将会删除所有内容，此操作不可撤销！',
+            async onConfirm() {
+                await deletePractice(practice.id)
+            },
+        })
+    }
 
     return (
         <div className='flex flex-1 overflow-hidden'>
@@ -189,11 +213,13 @@ export function PracticeConstruction() {
 
                                 {selectedChunk.answer?.type === 'pic' ? (
                                     <div className='overflow-hidden rounded-md border bg-card'>
-                                        {selectedChunk.answer.value && <img src={selectedChunk.answer.value} alt='answer' />}
+                                        {selectedChunk.answer.value && (
+                                            <ImageRenderer src={selectedChunk.answer.value} className='w-full' alt='answer' />
+                                        )}
                                     </div>
                                 ) : (
                                     <Textarea
-                                        value={selectedChunk.answer?.value as string}
+                                        value={(selectedChunk.answer?.value as string) || ''}
                                         onChange={handleInputAnswerText}
                                         placeholder='在此输入详解'
                                         className='min-h-24 bg-card'
@@ -205,6 +231,8 @@ export function PracticeConstruction() {
                 </div>
                 <footer className='my-4 flex h-10 flex-row-reverse items-center gap-4 px-4'>
                     <ConstructionPreviewer
+                        key={+previewerOpen}
+                        title={practice?.title || ''}
                         open={previewerOpen}
                         onOpenChange={setPreviewerOpen}
                         chunks={chunks}
@@ -215,7 +243,7 @@ export function PracticeConstruction() {
                         </Button>
                     </ConstructionPreviewer>
                     {typeof constructing === 'string' && (
-                        <Button className='text-red-600'>
+                        <Button className='text-red-600' onClick={handleDelete}>
                             <TrashIcon size={18} />
                             删除资料
                         </Button>

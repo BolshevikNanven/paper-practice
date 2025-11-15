@@ -9,6 +9,7 @@ import { useState } from 'react'
 import { ClassValue } from 'clsx'
 import { cn } from '@/lib/utils'
 import { usePracticeStore } from '@/store/practice'
+import ImageRenderer from '../common/image-renderer'
 
 export function PracticePlayground() {
     const isOpen = usePracticeStore(s => s.playgroundOpened)
@@ -74,7 +75,7 @@ export function PracticePlayground() {
                 <main className='m-auto flex flex-col gap-8 pt-12 pb-[40vh]' style={{ width: scaleRatio + '%' }}>
                     {chunks.map((it, idx) => (
                         <div key={it.id + idx} className='flex flex-col'>
-                            <img src={it.source} alt='practicing' className='rounded-sm rounded-br-none border bg-card' />
+                            <ImageRenderer src={it.source} alt='practicing' className='rounded-sm rounded-br-none border bg-card' />
                             <div className='relative ml-auto flex h-10 -translate-y-px'>
                                 <div className='absolute top-0 right-0 -z-10 h-full w-[calc(100%-16px)] rounded-br-xl border-r border-b bg-card' />
                                 <Mask className='absolute top-0 -left-9 -z-10' />
@@ -97,7 +98,7 @@ export function PracticePlayground() {
                                         </Button>
                                     </div>
                                     {it.answer?.type === 'pic' ? (
-                                        <img src={it.answer.value} alt='answer' />
+                                        <ImageRenderer src={it.answer.value} alt='answer' />
                                     ) : (
                                         <pre className='overflow-hidden p-4 break-all whitespace-pre-wrap'>
                                             {it.answer?.value as string}

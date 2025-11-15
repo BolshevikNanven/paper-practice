@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { ChunkData, OverviewData, PracticeSetData } from './interface'
+import { ChunkData, OverviewData, PracticeData, PracticeSetData } from './interface'
 import { Repository } from '@/db/repository'
 
 interface Store {
@@ -21,6 +21,9 @@ interface Store {
         selectSubject: (subject?: string) => void
         loadPracticeSetData: (id: string, preset?: boolean) => Promise<void>
         updateOverviewData: (data: OverviewData[]) => Promise<void>
+        createPractice: (data: PracticeData) => Promise<void>
+        updatePractice: (data: PracticeData) => Promise<void>
+        deletePractice: (id: string) => Promise<void>
     }
 }
 
@@ -115,6 +118,34 @@ export const usePracticeStore = create<Store>()((set, get) => ({
             }
             await Repository.updatePracticeSetMeta(practiceSet.id, { overview: data })
             set({ selectingPracticeSetData: { ...practiceSet, overview: data } })
+        },
+        async createPractice(data) {
+            const setId = get().selectingPracticeSetData?.id
+            if (!setId) {
+                return
+            }
+            await Repository.createPractice(setId, data)
+            get().actions.loadPracticeSetData(setId)
+            get().actions.switchConstruction(false)
+        },
+        async updatePractice(data) {
+            const setId = get().selectingPracticeSetData?.id
+            if (!setId) {
+                return
+            }
+
+            await Repository.updatePractice(data.id, data)
+            get().actions.loadPracticeSetData(setId)
+            get().actions.switchConstruction(false)
+        },
+        async deletePractice(id) {
+            const setId = get().selectingPracticeSetData?.id
+            if (!setId) {
+                return
+            }
+            await Repository.deletePractice(id)
+            get().actions.loadPracticeSetData(setId)
+            get().actions.switchConstruction(false)
         },
     },
 }))

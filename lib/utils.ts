@@ -1,5 +1,5 @@
 import { PracticeNode } from '@/components/practice/subject'
-import { OverviewData } from '@/store/practice'
+import { OverviewData } from '@/store/interface'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -49,6 +49,25 @@ export function deepClone<T>(source: T): T {
             const newRegExp = new RegExp(source.source, source.flags)
             cache.set(source, newRegExp) // 存入缓存
             return newRegExp as T
+        }
+
+        if (source instanceof File) {
+            // File 构造函数可以从一个 Blob (或 File) 创建一个新 File
+            const newFile = new File([source], source.name, {
+                type: source.type,
+                lastModified: source.lastModified,
+            })
+            cache.set(source, newFile) // 存入缓存
+            return newFile as T
+        }
+
+        // 3.4 处理 Blob
+        if (source instanceof Blob) {
+            // Blob.slice() 是克隆 Blob 的标准方法
+            // 它会返回一个新的 Blob 对象，包含相同的数据
+            const newBlob = source.slice(0, source.size, source.type)
+            cache.set(source, newBlob) // 存入缓存
+            return newBlob as T
         }
 
         // 3.3 处理 Set

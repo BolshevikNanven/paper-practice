@@ -41,14 +41,16 @@ export function PracticeOverview() {
     return (
         <>
             <div className='relative flex h-full shrink-0 flex-col overflow-auto px-4 pb-8' style={{ width: width + 'px' }}>
-                <div className='sticky top-0 left-0 mb-2 flex h-10 shrink-0 items-center border-b bg-zinc-50 z-10 pb-2 pl-2 font-semibold'>
-                    目录
-                    {editing && (
-                        <Button onClick={handleAddRootNode} className='ml-auto font-medium'>
-                            <ListPlusIcon size={18} />
-                            添加新专题
-                        </Button>
-                    )}
+                <div className='sticky top-0 left-0 z-10 mb-2 pb-2 flex shrink-0 items-center border-b bg-zinc-50 font-semibold'>
+                    <div className='flex h-10 items-center w-full pl-2'>
+                        目录
+                        {editing && (
+                            <Button onClick={handleAddRootNode} className='ml-auto font-medium'>
+                                <ListPlusIcon size={18} />
+                                添加新专题
+                            </Button>
+                        )}
+                    </div>
                 </div>
                 {flatNodes.map(node => (
                     <PracticeSubject

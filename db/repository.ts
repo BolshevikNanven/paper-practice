@@ -101,14 +101,16 @@ export const Repository = {
      * 此方法是事务性的，会同时添加 PracticeData, Chunks,
      * 和 ChunkContent，并更新 PracticeSet 的 `updatedAt`。
      */
-    async addPractice(practiceSetId: string, newPractice: PracticeData): Promise<void> {
+    async createPractice(practiceSetId: string, newPractice: PracticeData): Promise<void> {
         const practicesForDB: PracticeDataDB[] = []
         const chunksForDB: ChunkDB[] = []
         const contentsForDB: ChunkContentDB[] = []
 
+        const practiceId = nanoid()
+
         // --- 1. 解构 Practice ---
         practicesForDB.push({
-            id: newPractice.id,
+            id: practiceId,
             practiceSetId: practiceSetId, // 关联到顶层 Set
             title: newPractice.title,
         })
@@ -116,7 +118,7 @@ export const Repository = {
         for (const chunk of newPractice.chunks) {
             chunksForDB.push({
                 id: chunk.id,
-                practiceDataId: newPractice.id, // 关联到 Practice
+                practiceDataId: practiceId, // 关联到 Practice
                 subjects: chunk.subjects,
             })
 
