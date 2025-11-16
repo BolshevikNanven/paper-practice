@@ -53,7 +53,7 @@ function DialogContent({
                 </VisuallyHidden.Root>
                 {children}
                 <DialogPrimitive.Close asChild data-slot='dialog-close'>
-                    <Button variant='icon' className='fixed top-4 right-4'>
+                    <Button variant='icon' className='fixed top-4 right-4 z-50'>
                         <XIcon size={18} />
                     </Button>
                 </DialogPrimitive.Close>

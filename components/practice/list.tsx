@@ -1,7 +1,6 @@
 'use client'
 
 import { RailScroller } from '../common/rail-scroller'
-import { PracticePlayground } from './playground'
 import { Practice } from './practice'
 
 import { motion } from 'motion/react'
@@ -52,7 +51,6 @@ export function PracticeList() {
                     )}
                 </div>
             </RailScroller>
-            <PracticePlayground />
         </>
     )
 }

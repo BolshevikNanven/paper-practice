@@ -9,7 +9,7 @@ import {
 } from '../ui/dropdown-menu'
 import { CursorTextIcon, FolderOpenIcon, TrashIcon } from '@phosphor-icons/react'
 import { useRouter } from 'next/navigation'
-import { useDialog } from '../common/confirm-dialog'
+import { useDialog } from '@/hooks/use-dialog'
 import { usePracticeSetStore } from '@/store/practice-set'
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog'
 import { Button } from '../common/button'

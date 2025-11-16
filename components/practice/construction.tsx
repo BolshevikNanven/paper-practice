@@ -17,7 +17,8 @@ import { deepClone } from '@/lib/utils'
 import { ChunkData } from '@/store/interface'
 import { ConstructionPreviewer } from './construction-previewer'
 import ImageRenderer from '../common/image-renderer'
-import { useDialog } from '../common/confirm-dialog'
+import { useDialog } from '@/hooks/use-dialog'
+import { useGeneralStore } from '@/store/general'
 
 export function PracticeConstruction() {
     const constructing = usePracticeStore(s => s.constructing)
@@ -35,10 +36,17 @@ export function PracticeConstruction() {
     const selectedChunk = useMemo(() => chunks.find(chunk => chunk.id === selectedChunkId), [selectedChunkId, chunks])
 
     const [previewerOpen, setPreviewerOpen] = useState(false)
+    const sidebarWidth = useGeneralStore(s => s.constructionSidebarWidth)
+    const setSidebarWidth = useGeneralStore(s => s.actions.setConstructionSidebarWidth)
+
     const [selectorOpen, setSelectorOpen] = useState(false)
     const creatorRef = useRef<ConstructionCreatorRef>(null)
 
     const dialog = useDialog()
+
+    function handleResize(dx: number) {
+        setSidebarWidth(prev => (prev - dx > 300 && prev - dx < 500 ? prev - dx : prev))
+    }
 
     function handleSelectChunk(id: string) {
         setSelectedChunkId(id)
@@ -152,8 +160,8 @@ export function PracticeConstruction() {
                     />
                 )}
             </div>
-            <MovableDivider />
-            <div className='flex w-[380px] flex-col'>
+            <MovableDivider onMove={handleResize} />
+            <div className='flex flex-col' style={{ width: sidebarWidth + 'px' }}>
                 <header className='mb-2 flex h-10 items-center px-4'>
                     <h3 className='mr-auto font-bold'>预览</h3>
                 </header>

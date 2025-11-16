@@ -167,7 +167,7 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
                         自动分片
                     </Button>
                 </ButtonGroup>
-                <UploadWrapper onFileSelect={handleSelectPaper} multiple>
+                <UploadWrapper onFileSelect={handleSelectPaper} multiple accept='image/*'>
                     <Button>
                         <UploadSimpleIcon size={18} />
                         上传资料

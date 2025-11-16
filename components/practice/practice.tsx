@@ -3,37 +3,36 @@
 import { usePracticeStore } from '@/store/practice'
 import { cn } from '@/lib/utils'
 import { MouseEvent } from 'react'
-import { PracticeData } from '@/store/interface'
+import { ChunkData, PracticeData } from '@/store/interface'
 import ImageRenderer from '../common/image-renderer'
+import { usePlayground } from '@/hooks/use-playground'
 
 interface Props {
     data: PracticeData
 }
 export function Practice({ data }: Props) {
-    const { openPlayground, switchConstruction } = usePracticeStore(s => s.actions)
+    const openPlayground = usePlayground()
+    const { switchConstruction } = usePracticeStore(s => s.actions)
     const selectedSubject = usePracticeStore(s => s.selectingSubject)
     const editing = usePracticeStore(s => s.editing)
 
     function handleClickPractice() {
         if (editing) {
-            console.log(data)
-
             switchConstruction(data.id)
         } else {
-            openPlayground({ type: 'practice', practice: data.id })
+            openPlayground({ type: 'chunks', chunks: data.chunks })
         }
     }
 
-    function handleClickChunk(e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>, chunk: string) {
+    function handleClickChunk(e: MouseEvent<HTMLDivElement, globalThis.MouseEvent>, chunk: ChunkData) {
         if (editing) {
             return
         }
         e.stopPropagation()
 
         openPlayground({
-            type: 'chunk',
-            practice: data.id,
-            chunk,
+            type: 'chunks',
+            chunks: [chunk],
         })
     }
 
@@ -51,7 +50,7 @@ export function Practice({ data }: Props) {
                     return (
                         <div
                             key={idx}
-                            onClick={active ? e => handleClickChunk(e, chunk.id) : undefined}
+                            onClick={active ? e => handleClickChunk(e, chunk) : undefined}
                             className={cn(
                                 'w-full',
                                 active && 'z-10 rounded-xs outline-3 outline-main transition-all',

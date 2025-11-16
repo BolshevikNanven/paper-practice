@@ -16,15 +16,7 @@ interface DialogContextType {
     showDialog: (options: DialogOptions) => void
 }
 
-const DialogContext = createContext<DialogContextType | undefined>(undefined)
-
-export function useDialog() {
-    const context = useContext(DialogContext)
-    if (!context) {
-        throw new Error('useDialog must be used within a ConfirmDialogProvider')
-    }
-    return context.showDialog
-}
+export const DialogContext = createContext<DialogContextType | undefined>(undefined)
 
 export function ConfirmDialogProvider({ children }: { children: React.ReactNode }) {
     const [open, setOpen] = useState(false)

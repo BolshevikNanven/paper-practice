@@ -1,4 +1,5 @@
 import { ConfirmDialogProvider } from '@/components/common/confirm-dialog'
+import { PlaygroundProvider } from '@/components/common/playground'
 
 export default function HomeLayout({
     children,
@@ -7,7 +8,9 @@ export default function HomeLayout({
 }>) {
     return (
         <div className='h-screen w-screen overflow-hidden bg-zinc-50'>
-            <ConfirmDialogProvider>{children}</ConfirmDialogProvider>
+            <ConfirmDialogProvider>
+                <PlaygroundProvider>{children}</PlaygroundProvider>
+            </ConfirmDialogProvider>
         </div>
     )
 }

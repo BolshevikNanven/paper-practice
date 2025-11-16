@@ -4,6 +4,8 @@ import { HouseSimpleIcon, ListIcon, PlayIcon, PlusIcon, ShuffleAngularIcon, User
 import { Button } from '../common/button'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { usePracticeStore } from '@/store/practice'
+import { usePlayground } from '@/hooks/use-playground'
+import { useGeneralStore } from '@/store/general'
 
 export function PracticeHeader() {
     const selectingPracticeSetData = usePracticeStore(s => s.selectingPracticeSetData!)
@@ -14,7 +16,9 @@ export function PracticeHeader() {
     const router = useRouter()
     const searchParams = useSearchParams()
 
-    const { switchEditMode, openPlayground, switchConstruction } = usePracticeStore(s => s.actions)
+    const { switchEditMode, switchConstruction } = usePracticeStore(s => s.actions)
+    const { switchOverviewShown } = useGeneralStore(s => s.actions)
+    const openPlayground = usePlayground()
 
     function handleStartSubject() {
         if (selectedSubject) {
@@ -26,9 +30,13 @@ export function PracticeHeader() {
         openPlayground({ type: 'random' })
     }
 
+    function handleOverview() {
+        switchOverviewShown()
+    }
+
     return (
         <div className='flex items-center gap-4 p-4'>
-            <Button variant='icon'>
+            <Button variant='icon' onClick={handleOverview}>
                 <ListIcon size={18} />
             </Button>
             <div className='flex items-center'>

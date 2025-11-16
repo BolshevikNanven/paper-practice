@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid'
 import { memo, useState } from 'react'
 import { Button } from '../common/button'
 import { PlusIcon, TrashIcon } from '@phosphor-icons/react'
-import { useDialog } from '../common/confirm-dialog'
+import { useDialog } from '@/hooks/use-dialog'
 import { OverviewData } from '@/store/interface'
 
 export interface PracticeNode {

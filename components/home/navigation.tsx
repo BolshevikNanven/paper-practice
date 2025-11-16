@@ -12,8 +12,8 @@ interface Props {
 export function Navigation({ navigation, onNavigate }: Props) {
     return (
         <nav className='flex w-[320px] flex-col px-4'>
-            <header className='my-4 flex h-10 items-center justify-center gap-4'>
-                <Image src={'/nanven-small.png'} alt='logo' width={32} height={32} />
+            <header className='my-4 flex h-10 items-center gap-2'>
+                <Image src={'/practice.png'} alt='logo' height={16} width={532 * (16 / 64)} />
             </header>
             <div className='mb-4 h-px bg-border'></div>
             <div className='flex flex-col gap-1'>
