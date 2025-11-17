@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { ClassValue } from 'clsx'
-import { useRef } from 'react'
+import { memo, useRef } from 'react'
 
 export interface Rect {
     id: string
@@ -22,7 +22,7 @@ interface Props {
     onEndDrag?: () => void
     children?: React.ReactNode
 }
-export function ConstructionRect({
+export const ConstructionRect = memo(function ConstructionRect({
     rect,
     className,
     parentElement,
@@ -200,7 +200,7 @@ export function ConstructionRect({
             {children}
         </div>
     )
-}
+})
 
 export interface ImageLayoutWithElement {
     src: string

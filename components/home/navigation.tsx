@@ -1,6 +1,6 @@
 'use client'
 
-import { Tab } from '@/app/(main)/page'
+import { Tab } from '@/app/(main)/constants'
 import { NavItem } from '@/components/home/navigation-item'
 import { BookmarksIcon, BookOpenIcon, PackageIcon } from '@phosphor-icons/react'
 import Image from 'next/image'

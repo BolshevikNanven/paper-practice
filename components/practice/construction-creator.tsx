@@ -1,6 +1,6 @@
 'use client'
 
-import { CropIcon, RobotIcon, TrashIcon, UploadSimpleIcon } from '@phosphor-icons/react'
+import { CropIcon, RobotIcon, SpinnerIcon, TrashIcon } from '@phosphor-icons/react'
 import { Button } from '../common/button'
 import { ButtonGroup } from '../common/button-group'
 import React, { memo, useRef, useState, forwardRef, useImperativeHandle } from 'react'
@@ -9,8 +9,9 @@ import { ConstructionRect, cropSingleRect, ImageLayoutWithElement, Rect } from '
 import { ChunkData } from '@/store/interface'
 import { nanoid } from 'nanoid'
 import { cn } from '@/lib/utils'
-import { UploadWrapper } from '../common/upload-wrapper'
 import { PaperCreator } from './paper-creator'
+import { analyzePaperLayout } from '@/lib/onnx'
+import ImageRenderer from '../common/image-renderer'
 
 interface Props {
     chunks: ChunkData[]
@@ -27,7 +28,8 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
     { chunks, selectedChunk, onSelect, onChange },
     ref,
 ) {
-    const [papers, setPapers] = useState<string[]>([])
+    const [papers, setPapers] = useState<Array<Blob | string>>([])
+    const [loading, setLoading] = useState(false)
 
     const [isCropping, setIsCropping] = useState(false)
     const [cropRects, setCropRects] = useState<Rect[]>([])
@@ -146,16 +148,48 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
     }
 
     function handleSelectPaper(images: Blob[]) {
-        const urls: string[] = []
+        setPapers(prev => [...prev, ...images])
+    }
 
-        console.log(images);
-        
-
-        for (const file of images) {
-            urls.push(URL.createObjectURL(file))
+    async function handleAutoCrop() {
+        if (papers.length === 0 || !containerRef.current) {
+            return
         }
 
-        setPapers(prev => [...prev, ...urls])
+        setLoading(true)
+
+        const imgs = containerRef.current.querySelectorAll('[data-paper]')
+        try {
+            const results = await Promise.all(papers.map(p => analyzePaperLayout(p as Blob)))
+
+            const rects = results
+                .map(({ origin, output }, idx) => {
+                    const top = (imgs[idx] as HTMLImageElement).offsetTop
+
+                    const ratio = containerRef.current!.clientWidth / origin!.w
+
+                    return output!.map(it => ({
+                        id: nanoid(),
+                        x: it.box[0] * ratio,
+                        y: it.box[1] * ratio + top,
+                        w: (it.box[2] - it.box[0]) * ratio,
+                        h: (it.box[3] - it.box[1]) * ratio,
+                    }))
+                })
+                .flat()
+
+            setCropRects(prev => [...prev, ...rects])
+            onChange([
+                ...chunks,
+                ...rects.map(rect => ({
+                    id: rect.id,
+                    subjects: [],
+                    source: '',
+                })),
+            ])
+        } finally {
+            setLoading(false)
+        }
     }
 
     return (
@@ -166,8 +200,8 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
                         <CropIcon size={18} />
                         {isCropping ? '完成框选' : '框选分片'}
                     </Button>
-                    <Button>
-                        <RobotIcon size={18} />
+                    <Button onClick={handleAutoCrop} disabled={loading}>
+                        {loading ? <SpinnerIcon size={18} className='animate-spin' /> : <RobotIcon size={18} />}
                         自动分片
                     </Button>
                 </ButtonGroup>
@@ -183,8 +217,8 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
                     onMouseMove={handleCropMove}
                     onMouseUp={handleCropDone}
                 >
-                    {papers.map(url => (
-                        <img key={url} src={url} className='w-full' alt='paper' />
+                    {papers.map((url, idx) => (
+                        <ImageRenderer key={idx} src={url} data-paper className='w-full' alt='paper' />
                     ))}
                     {cropRects.map((rect, idx) => (
                         <ConstructionRect

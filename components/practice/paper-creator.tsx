@@ -73,6 +73,7 @@ export function PaperCreator({ onCreate }: Props) {
 
             onCreate?.(allFilesImages.flat())
         } catch (e) {
+            console.error(e)
         } finally {
             setLoading(false)
         }

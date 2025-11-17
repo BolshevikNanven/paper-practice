@@ -6,12 +6,7 @@ import { PracticeImporter } from '@/components/home/practice-importer'
 import { PracticeSet } from '@/components/home/practice-set'
 import { usePracticeSetStore } from '@/store/practice-set'
 import { useState, useEffect } from 'react'
-
-export const Tab = {
-    public: '公共题库',
-    own: '我的题库',
-    star: '收藏',
-} as const
+import { Tab } from './constants'
 
 export default function Home() {
     const [tab, setTab] = useState<keyof typeof Tab>('public')
