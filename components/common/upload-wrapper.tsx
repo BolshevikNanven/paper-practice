@@ -15,7 +15,6 @@ export function UploadWrapper({ onFileSelect, accept = '', multiple = false, cla
     const inputRef = useRef<HTMLInputElement>(null)
 
     const triggerFile = () => {
-        // 每次点击都重置 input 的 value，确保可以重复选择同一个文件
         if (inputRef.current) {
             inputRef.current.value = ''
         }

@@ -136,4 +136,9 @@
         #000 28px,
         #000 56px);
   }
+
+  .use-dropdown-menu-fit-w {
+    min-width: 0 !important;
+    width: var(--radix-dropdown-menu-trigger-width) !important;
+  }
 }

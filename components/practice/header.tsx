@@ -1,6 +1,6 @@
 'use client'
 
-import { HouseSimpleIcon, ListIcon, PlayIcon, PlusIcon, ShuffleAngularIcon, UserIcon, WrenchIcon } from '@phosphor-icons/react'
+import { HouseSimpleIcon, ListIcon, PlayIcon, PlusIcon, ShuffleAngularIcon, WrenchIcon } from '@phosphor-icons/react'
 import { Button } from '../common/button'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { usePracticeStore } from '@/store/practice'
@@ -71,10 +71,6 @@ export function PracticeHeader() {
                     {isEditing ? '退出编辑' : '编辑模式'}
                 </Button>
             )}
-
-            <Button variant='icon'>
-                <UserIcon size={18} />
-            </Button>
         </div>
     )
 }

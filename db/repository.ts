@@ -36,52 +36,59 @@ export const Repository = {
         const practiceIds = practices.map(p => p.id)
 
         // 3. 获取所有关联的 Chunks (元数据)
-        // 'anyOf' 效率很高
-        const chunks = await db.chunks.where('practiceDataId').anyOf(practiceIds).toArray()
-        const chunkIds = chunks.map(c => c.id)
+        const allChunks = await db.chunks.where('practiceDataId').anyOf(practiceIds).toArray()
 
-        // 4. 批量获取所有 ChunkContent (大文件)
-        // 'bulkGet' 是最高效的按 ID 批量获取的方式
-        const contents = await db.chunkContent.bulkGet(chunkIds)
+        // 3b. 批量获取所有 ChunkContent (大文件)
+        //     (我们直接用 allChunks 的 id 列表，比你之前的 chunkIds 更直接)
+        const allContents = await db.chunkContent.bulkGet(allChunks.map(c => c.id))
 
-        // 5. 拼接数据 (创建 content 查找表)
+        // 3c. 拼接数据 (创建 content 查找表)
         const contentMap = new Map<string, ChunkContentDB>()
-        for (const content of contents) {
+        for (const content of allContents) {
             if (content) {
                 contentMap.set(content.id, content)
             }
         }
 
-        // 6. 重构 PracticeData 数组
-        const reconstructedSet: PracticeData[] = practices.map(p => {
-            // 找到这个 practice 的所有 chunks
-            const practiceChunks: ChunkData[] = chunks
-                .filter(c => c.practiceDataId === p.id)
-                .map(c => {
-                    const content = contentMap.get(c.id)
-                    // 合并 ChunkDB 和 ChunkContentDB
-                    return {
-                        id: c.id,
-                        subjects: c.subjects,
-                        source: content?.source ?? '', // 提供回退
-                        answer: content?.answer,
-                    }
-                })
+        // 3d. (新) 创建 Chunk 元数据查找表，用于按 ID 快速查找
+        const chunkMetaMap = new Map<string, ChunkDB>()
+        for (const chunk of allChunks) {
+            chunkMetaMap.set(chunk.id, chunk)
+        }
+
+        // --- 4. (已重构) 重构 PracticeData 数组 (处理新旧数据) ---
+        const reconstructedSet: PracticeData[] = practices.map(p_db => {
+            const practice = p_db
+            const practiceChunks: ChunkData[] = []
+
+            for (const chunkId of practice.chunkOrder) {
+                const meta = chunkMetaMap.get(chunkId)
+                const content = contentMap.get(chunkId)
+
+                if (meta && content) {
+                    practiceChunks.push({
+                        id: meta.id,
+                        subjects: meta.subjects,
+                        source: content.source,
+                        answer: content.answer,
+                    })
+                }
+            }
 
             return {
-                id: p.id,
-                title: p.title,
-                chunks: practiceChunks,
+                id: practice.id,
+                title: practice.title,
+                chunks: practiceChunks, // <-- 数组现在是有序的 (如果是新数据)
             }
         })
 
-        // 7. 返回完整的 PracticeSetData
+        // 5. 返回完整的 PracticeSetData (无变化)
         return {
             id: set.id,
             title: set.title,
             overview: set.overview,
             set: reconstructedSet,
-            updatedAt: set.updatedAt,
+            updatedAt: set.updatedAt, // <-- 确保你的类型包含这个
         }
     },
     async listPracticeSets(): Promise<PracticeSetData[]> {
@@ -108,17 +115,21 @@ export const Repository = {
 
         const practiceId = nanoid()
 
-        // --- 1. 解构 Practice ---
+        // 1a. 提取所有 chunk ID，保持原始顺序
+        const chunkOrder = newPractice.chunks.map(chunk => chunk.id)
+
         practicesForDB.push({
             id: practiceId,
-            practiceSetId: practiceSetId, // 关联到顶层 Set
+            practiceSetId: practiceSetId,
             title: newPractice.title,
+            chunkOrder: chunkOrder,
         })
 
         for (const chunk of newPractice.chunks) {
+            // ... 这部分代码保持不变 ...
             chunksForDB.push({
                 id: chunk.id,
-                practiceDataId: practiceId, // 关联到 Practice
+                practiceDataId: practiceId,
                 subjects: chunk.subjects,
             })
 
@@ -130,24 +141,16 @@ export const Repository = {
         }
 
         // --- 2. 在事务中执行写入 ---
-        await db.transaction(
-            'rw',
-            db.practiceData,
-            db.chunks,
-            db.chunkContent,
-            db.practiceSets, // 需要包含 practiceSets 来更新时间戳
-            async () => {
-                // 2a. 批量添加所有新数据
-                await db.practiceData.bulkAdd(practicesForDB)
-                await db.chunks.bulkAdd(chunksForDB)
-                await db.chunkContent.bulkAdd(contentsForDB)
+        await db.transaction('rw', db.practiceData, db.chunks, db.chunkContent, db.practiceSets, async () => {
+            await db.practiceData.add(practicesForDB[0])
 
-                // 2b. 更新 PracticeSet 的 `updatedAt`
-                await db.practiceSets.where({ id: practiceSetId }).modify({
-                    updatedAt: dayjs().format('YYYY-MM-DD'),
-                })
-            },
-        )
+            await db.chunks.bulkAdd(chunksForDB)
+            await db.chunkContent.bulkAdd(contentsForDB)
+
+            await db.practiceSets.where({ id: practiceSetId }).modify({
+                updatedAt: dayjs().format('YYYY-MM-DD'),
+            })
+        })
     },
     /**
      * 删除一个 Practice (及其所有子数据)

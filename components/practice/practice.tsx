@@ -54,7 +54,7 @@ export function Practice({ data }: Props) {
                             className={cn(
                                 'w-full',
                                 active && 'z-10 rounded-xs outline-3 outline-main transition-all',
-                                active && !editing && 'cursor-zoom-in hover:z-20 hover:outline-offset-2',
+                                active && !editing && 'cursor-zoom-in hover:z-20 hover:scale-105',
                             )}
                         >
                             <ImageRenderer src={chunk.source} alt={data.title + idx} className='w-full' />

@@ -7,7 +7,7 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '../ui/dropdown-menu'
-import { CursorTextIcon, FolderOpenIcon, TrashIcon } from '@phosphor-icons/react'
+import { CursorTextIcon, ExportIcon, FolderOpenIcon, TrashIcon } from '@phosphor-icons/react'
 import { useRouter } from 'next/navigation'
 import { useDialog } from '@/hooks/use-dialog'
 import { usePracticeSetStore } from '@/store/practice-set'
@@ -15,6 +15,7 @@ import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogT
 import { Button } from '../common/button'
 import { Input } from '../ui/input'
 import { useState } from 'react'
+import { Persist } from '@/lib/persist'
 
 interface Props {
     route: string
@@ -53,6 +54,10 @@ export function PracticeSet({ route, title, id, updatedAt, editable }: Props) {
         setEditTitle('')
     }
 
+    async function handleExport() {
+        await Persist.exportPracticeSetAsZip(id)
+    }
+
     return (
         <Dialog>
             <DropdownMenu>
@@ -77,6 +82,10 @@ export function PracticeSet({ route, title, id, updatedAt, editable }: Props) {
                                 修改名称
                             </DropdownMenuItem>
                         </DialogTrigger>
+                        <DropdownMenuItem onClick={handleExport}>
+                            <ExportIcon />
+                            导出
+                        </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem variant='destructive' onClick={handleDelete}>
                             <TrashIcon />

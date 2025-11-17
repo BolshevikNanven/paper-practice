@@ -10,6 +10,7 @@ import { ChunkData } from '@/store/interface'
 import { nanoid } from 'nanoid'
 import { cn } from '@/lib/utils'
 import { UploadWrapper } from '../common/upload-wrapper'
+import { PaperCreator } from './paper-creator'
 
 interface Props {
     chunks: ChunkData[]
@@ -144,10 +145,13 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
         onChange(chunks.filter(chunk => chunk.id !== id))
     }
 
-    function handleSelectPaper(files: FileList) {
+    function handleSelectPaper(images: Blob[]) {
         const urls: string[] = []
 
-        for (const file of files) {
+        console.log(images);
+        
+
+        for (const file of images) {
             urls.push(URL.createObjectURL(file))
         }
 
@@ -167,12 +171,7 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
                         自动分片
                     </Button>
                 </ButtonGroup>
-                <UploadWrapper onFileSelect={handleSelectPaper} multiple accept='image/*'>
-                    <Button>
-                        <UploadSimpleIcon size={18} />
-                        上传资料
-                    </Button>
-                </UploadWrapper>
+                <PaperCreator onCreate={handleSelectPaper} />
             </ConstructionHeader>
             <div className='mr-2 flex-1 overflow-x-hidden overflow-y-auto pr-2 pb-12 pl-6 select-none'>
                 {papers.length === 0 && <div className='h-full w-full bg-card shadow-xl'></div>}
@@ -187,7 +186,6 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
                     {papers.map(url => (
                         <img key={url} src={url} className='w-full' alt='paper' />
                     ))}
-                    {/* 渲染所有已选框 */}
                     {cropRects.map((rect, idx) => (
                         <ConstructionRect
                             key={idx}
@@ -213,7 +211,6 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
                         </ConstructionRect>
                     ))}
                     {isCropping && <div className='absolute inset-0 cursor-cell bg-black/20'></div>}
-                    {/* 渲染当前正在框选的选框 */}
                     {currentRect && (
                         <div
                             className='absolute border-2 border-main/80 bg-main/10'

@@ -39,7 +39,7 @@ export function ConstructionPreviewer({ title: defaultTitle, open, chunks, onCon
             {children}
             <DialogContent className='flex max-h-full flex-col overflow-hidden'>
                 <DialogHeader>
-                    <DialogTitle>预览</DialogTitle>
+                    <DialogTitle>预览并保存</DialogTitle>
                     <VisuallyHidden>
                         <DialogDescription>预览并保存</DialogDescription>
                     </VisuallyHidden>
@@ -52,7 +52,7 @@ export function ConstructionPreviewer({ title: defaultTitle, open, chunks, onCon
                 </div>
                 <DialogFooter className='shrink-0'>
                     <Button variant='primary' disabled={title === ''} onClick={handleConfirm}>
-                        确认
+                        保存
                     </Button>
                 </DialogFooter>
             </DialogContent>

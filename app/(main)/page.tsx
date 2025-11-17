@@ -2,6 +2,7 @@
 
 import { Navigation } from '@/components/home/navigation'
 import { PracticeCreator } from '@/components/home/practice-creator'
+import { PracticeImporter } from '@/components/home/practice-importer'
 import { PracticeSet } from '@/components/home/practice-set'
 import { usePracticeSetStore } from '@/store/practice-set'
 import { useState, useEffect } from 'react'
@@ -46,6 +47,7 @@ export default function Home() {
                         ))}
                     {tab === 'own' && (
                         <>
+                            <PracticeImporter />
                             <PracticeCreator />
                             {privateData.map(it => (
                                 <PracticeSet

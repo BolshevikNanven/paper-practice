@@ -11,6 +11,7 @@ export interface PracticeDataDB {
     id: string
     practiceSetId: string
     title: string
+    chunkOrder: string[]
 }
 
 export interface ChunkDB {

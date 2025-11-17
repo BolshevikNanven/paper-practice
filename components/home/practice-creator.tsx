@@ -49,7 +49,7 @@ export function PracticeCreator() {
                 </DialogHeader>
                 <Input value={title} onChange={handleTitleChange} placeholder='在此输入题库名称' />
                 <DialogFooter>
-                    <Button variant='primary' disabled={title === ''} onClick={handleConfirm}>
+                    <Button variant='primary' type='submit' disabled={title === ''} onClick={handleConfirm}>
                         立即创建
                     </Button>
                 </DialogFooter>
