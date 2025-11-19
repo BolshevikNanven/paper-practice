@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid'
-import type { WorkerRequest, WorkerResponse } from './interface'
+import type { WorkerOutput, WorkerRequest, WorkerResponse } from './interface'
 
 const CONCURRENCY = typeof navigator !== 'undefined' ? navigator.hardwareConcurrency || 4 : 4
 
@@ -8,16 +8,17 @@ interface Task {
     file: File | Blob
     resolve: (value: AnalyzeResult) => void
     reject: (reason?: Error) => void
+    onProgress?: (progress: number, file: string) => void
 }
 type AnalyzeResult = {
-    origin: WorkerResponse['origin']
-    output: WorkerResponse['output']
+    origin: { w: number; h: number }
+    output: WorkerOutput[]
 }
 
 const workers: Worker[] = []
 const idleWorkerIndices: number[] = []
 const taskQueue: Task[] = []
-const pendingMap = new Map<string, { resolve: (res: AnalyzeResult) => void; reject: (err: Error) => void }>()
+const pendingMap = new Map<string, Omit<Task, 'id' | 'file'>>()
 let isInitialized = false
 
 function initWorkers() {
@@ -29,20 +30,29 @@ function initWorkers() {
         })
 
         worker.onmessage = (event: MessageEvent<WorkerResponse>) => {
-            const { id, status, origin, output, error } = event.data
+            const data = event.data
+            // 注意：这里不要直接解构 { status, origin... }，因为 progress 类型的字段不同
 
-            const request = pendingMap.get(id)
+            const request = pendingMap.get(data.id)
+            if (!request) return
 
-            // 1. 处理 Promise 结果
-            if (request) {
-                if (status === 'success') {
-                    request.resolve({ origin, output })
-                } else {
-                    request.reject(new Error(error))
+            // ✨ 处理进度消息
+            if (data.status === 'progress') {
+                // 如果用户传了回调，就调用它
+                if (request.onProgress) {
+                    request.onProgress(data.progress, data.file)
                 }
-                pendingMap.delete(id)
+                return // ⚠️ 关键：如果是进度消息，直接 return，不要 resolve 也不要 recycleWorker
             }
 
+            // 处理完成或错误
+            if (data.status === 'success') {
+                request.resolve({ origin: data.origin!, output: data.output! })
+            } else {
+                request.reject(new Error(data.error))
+            }
+
+            pendingMap.delete(data.id)
             recycleWorker(i)
         }
 
@@ -63,7 +73,7 @@ function processQueue() {
     const task = taskQueue.shift()!
 
     if (task && worker) {
-        pendingMap.set(task.id, { resolve: task.resolve, reject: task.reject })
+        pendingMap.set(task.id, { resolve: task.resolve, reject: task.reject, onProgress: task.onProgress })
 
         const request: WorkerRequest = { id: task.id, image: task.file }
         worker.postMessage(request)
@@ -75,7 +85,10 @@ function recycleWorker(workerIndex: number) {
     processQueue()
 }
 
-export async function analyzePaperLayout(file: File | Blob): Promise<AnalyzeResult> {
+export async function analyzePaperLayout(
+    file: File | Blob,
+    onProgress?: (progress: number, file: string) => void,
+): Promise<AnalyzeResult> {
     initWorkers()
     const id = nanoid()
 
@@ -85,6 +98,7 @@ export async function analyzePaperLayout(file: File | Blob): Promise<AnalyzeResu
             file,
             resolve,
             reject,
+            onProgress,
         }
 
         taskQueue.push(task)

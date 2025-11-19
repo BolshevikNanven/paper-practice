@@ -2,7 +2,7 @@
 
 import { cn } from '@/lib/utils'
 import { ClassValue } from 'clsx'
-import { memo, useRef } from 'react'
+import { memo, useEffect, useRef, useState } from 'react'
 
 export interface Rect {
     id: string
@@ -22,6 +22,7 @@ interface Props {
     onEndDrag?: () => void
     children?: React.ReactNode
 }
+
 export const ConstructionRect = memo(function ConstructionRect({
     rect,
     className,
@@ -32,8 +33,24 @@ export const ConstructionRect = memo(function ConstructionRect({
     onEndDrag,
     children,
 }: Props) {
+    const [localRect, setLocalRect] = useState(rect)
+    const processingRect = useRef(rect)
+
     const dragStart = useRef<{ x: number; y: number; offsetX: number; offsetY: number } | null>(null)
-    const resizeStart = useRef<{ x: number; y: number; w: number; h: number; dir: string } | null>(null)
+    const resizeStart = useRef<{
+        x: number
+        y: number
+        w: number
+        h: number
+        x_pos: number
+        y_pos: number
+        dir: string
+    } | null>(null)
+
+    useEffect(() => {
+        setLocalRect(rect)
+        processingRect.current = rect
+    }, [rect])
 
     function getParentRect() {
         return parentElement.current?.getBoundingClientRect()
@@ -42,12 +59,8 @@ export const ConstructionRect = memo(function ConstructionRect({
     function handleMouseDown(e: React.MouseEvent) {
         e.stopPropagation()
         e.preventDefault()
-        dragStart.current = {
-            x: e.clientX,
-            y: e.clientY,
-            offsetX: rect.x,
-            offsetY: rect.y,
-        }
+        dragStart.current = { x: e.clientX, y: e.clientY, offsetX: localRect.x, offsetY: localRect.y }
+        processingRect.current = localRect
         document.addEventListener('mousemove', handleDrag)
         document.addEventListener('mouseup', handleDragEnd)
         onStartDrag?.()
@@ -63,15 +76,12 @@ export const ConstructionRect = memo(function ConstructionRect({
         let newX = dragStart.current.offsetX + dx
         let newY = dragStart.current.offsetY + dy
 
-        // 限制在父容器范围内
-        newX = Math.max(0, Math.min(newX, parent.width - rect.w))
-        newY = Math.max(0, Math.min(newY, parent.height - rect.h))
+        newX = Math.max(0, Math.min(newX, parent.width - processingRect.current.w))
+        newY = Math.max(0, Math.min(newY, parent.height - processingRect.current.h))
 
-        onChange({
-            ...rect,
-            x: newX,
-            y: newY,
-        })
+        const nextRect = { ...processingRect.current, x: newX, y: newY }
+        processingRect.current = nextRect
+        setLocalRect(nextRect)
     }
 
     function handleDragEnd() {
@@ -79,6 +89,7 @@ export const ConstructionRect = memo(function ConstructionRect({
         document.removeEventListener('mousemove', handleDrag)
         document.removeEventListener('mouseup', handleDragEnd)
         onEndDrag?.()
+        onChange(processingRect.current)
     }
 
     function handleResizeMouseDown(e: React.MouseEvent, dir: string) {
@@ -86,10 +97,13 @@ export const ConstructionRect = memo(function ConstructionRect({
         resizeStart.current = {
             x: e.clientX,
             y: e.clientY,
-            w: rect.w,
-            h: rect.h,
+            w: localRect.w,
+            h: localRect.h,
+            x_pos: localRect.x,
+            y_pos: localRect.y,
             dir,
         }
+        processingRect.current = localRect
         document.addEventListener('mousemove', handleResize)
         document.addEventListener('mouseup', handleResizeEnd)
         onStartDrag?.()
@@ -101,17 +115,19 @@ export const ConstructionRect = memo(function ConstructionRect({
         const dy = e.clientY - resizeStart.current.y
         const parent = getParentRect()
         if (!parent) return
-        const newRect = { ...rect }
 
-        if (resizeStart.current.dir === 'se') {
-            newRect.w = Math.max(10, Math.min(resizeStart.current.w + dx, parent.width - rect.x))
-            newRect.h = Math.max(10, Math.min(resizeStart.current.h + dy, parent.height - rect.y))
-        }
-        if (resizeStart.current.dir === 'nw') {
-            let newX = rect.x + dx
-            let newY = rect.y + dy
-            let newW = Math.max(10, resizeStart.current.w - dx)
-            let newH = Math.max(10, resizeStart.current.h - dy)
+        const start = resizeStart.current
+        const nextRect = { ...processingRect.current }
+
+        if (start.dir === 'se') {
+            nextRect.w = Math.max(10, Math.min(start.w + dx, parent.width - start.x_pos))
+            nextRect.h = Math.max(10, Math.min(start.h + dy, parent.height - start.y_pos))
+        } else if (start.dir === 'nw') {
+            let newX = start.x_pos + dx
+            let newY = start.y_pos + dy
+            let newW = Math.max(10, start.w - dx)
+            let newH = Math.max(10, start.h - dy)
+
             if (newX < 0) {
                 newW += newX
                 newX = 0
@@ -120,42 +136,53 @@ export const ConstructionRect = memo(function ConstructionRect({
                 newH += newY
                 newY = 0
             }
-            newW = Math.min(newW, parent.width - newX)
-            newH = Math.min(newH, parent.height - newY)
-            newRect.x = newX
-            newRect.y = newY
-            newRect.w = newW
-            newRect.h = newH
-        }
-        if (resizeStart.current.dir === 'ne') {
-            let newY = rect.y + dy
-            let newH = Math.max(10, resizeStart.current.h - dy)
-            let newW = Math.max(10, resizeStart.current.w + dx)
+
+            const maxX = start.x_pos + start.w - 10
+            const maxY = start.y_pos + start.h - 10
+
+            if (newX > maxX) newX = maxX
+            if (newY > maxY) newY = maxY
+
+            nextRect.x = newX
+            nextRect.y = newY
+            nextRect.w = newW
+            nextRect.h = newH
+        } else if (start.dir === 'ne') {
+            let newY = start.y_pos + dy
+            let newH = Math.max(10, start.h - dy)
+            const newW = Math.max(10, Math.min(start.w + dx, parent.width - start.x_pos))
+
             if (newY < 0) {
                 newH += newY
                 newY = 0
             }
-            newW = Math.min(newW, parent.width - rect.x)
-            newH = Math.min(newH, parent.height - newY)
-            newRect.y = newY
-            newRect.w = newW
-            newRect.h = newH
-        }
-        if (resizeStart.current.dir === 'sw') {
-            let newX = rect.x + dx
-            let newW = Math.max(10, resizeStart.current.w - dx)
-            let newH = Math.max(10, resizeStart.current.h + dy)
+
+            const maxY = start.y_pos + start.h - 10
+            if (newY > maxY) newY = maxY
+
+            nextRect.y = newY
+            nextRect.w = newW
+            nextRect.h = newH
+        } else if (start.dir === 'sw') {
+            let newX = start.x_pos + dx
+            let newW = Math.max(10, start.w - dx)
+            const newH = Math.max(10, Math.min(start.h + dy, parent.height - start.y_pos))
+
             if (newX < 0) {
                 newW += newX
                 newX = 0
             }
-            newW = Math.min(newW, parent.width - newX)
-            newH = Math.min(newH, parent.height - rect.y)
-            newRect.x = newX
-            newRect.w = newW
-            newRect.h = newH
+
+            const maxX = start.x_pos + start.w - 10
+            if (newX > maxX) newX = maxX
+
+            nextRect.x = newX
+            nextRect.w = newW
+            nextRect.h = newH
         }
-        onChange(newRect)
+
+        processingRect.current = nextRect
+        setLocalRect(nextRect)
     }
 
     function handleResizeEnd() {
@@ -163,36 +190,28 @@ export const ConstructionRect = memo(function ConstructionRect({
         document.removeEventListener('mousemove', handleResize)
         document.removeEventListener('mouseup', handleResizeEnd)
         onEndDrag?.()
+        onChange(processingRect.current)
     }
 
     return (
         <div
             className={cn('absolute cursor-pointer border-2 border-main bg-main/10', className)}
-            style={{
-                left: rect.x,
-                top: rect.y,
-                width: rect.w,
-                height: rect.h,
-            }}
+            style={{ left: localRect.x, top: localRect.y, width: localRect.w, height: localRect.h }}
             onMouseDown={handleMouseDown}
             onClick={onClick}
         >
-            {/* 右下角拉手 */}
             <div
                 className='absolute -right-1.5 -bottom-1.5 h-3 w-3 cursor-nwse-resize hover:border-2 hover:border-main hover:bg-card'
                 onMouseDown={e => handleResizeMouseDown(e, 'se')}
             />
-            {/* 左上角拉手 */}
             <div
                 className='absolute -top-1.5 -left-1.5 h-3 w-3 cursor-nwse-resize hover:border-2 hover:border-main hover:bg-card'
                 onMouseDown={e => handleResizeMouseDown(e, 'nw')}
             />
-            {/* 右上角拉手 */}
             <div
                 className='absolute -top-1.5 -right-1.5 h-3 w-3 cursor-nesw-resize hover:border-2 hover:border-main hover:bg-card'
                 onMouseDown={e => handleResizeMouseDown(e, 'ne')}
             />
-            {/* 左下角拉手 */}
             <div
                 className='absolute -bottom-1.5 -left-1.5 h-3 w-3 cursor-nesw-resize hover:border-2 hover:border-main hover:bg-card'
                 onMouseDown={e => handleResizeMouseDown(e, 'sw')}

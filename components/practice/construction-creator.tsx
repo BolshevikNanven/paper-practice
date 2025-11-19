@@ -24,6 +24,8 @@ export interface ConstructionCreatorRef {
     cropRectsToBlobs: () => Promise<void>
 }
 
+const sortRects = (a: Rect, b: Rect) => a.y - b.y
+
 const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function ConstructionCreator(
     { chunks, selectedChunk, onSelect, onChange },
     ref,
@@ -119,21 +121,36 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
         setIsDragging(false)
         startPoint.current = null
         if (currentRect.w > 0 && currentRect.h > 0) {
-            setCropRects(prev => [...prev, currentRect])
-            onChange([
+            const newRects = [...cropRects, currentRect].sort(sortRects)
+            setCropRects(newRects)
+
+            const newChunks = [
                 ...chunks,
                 {
                     id: currentRect.id,
                     subjects: [],
                     source: '',
                 },
-            ])
+            ]
+
+            const chunkMap = new Map(newChunks.map(c => [c.id, c]))
+            const sortedChunks = newRects.map(r => chunkMap.get(r.id)!).filter(Boolean)
+
+            onChange(sortedChunks)
         }
         setCurrentRect(null)
     }
 
-    function handleRectChange(idx: number, newRect: Rect) {
-        setCropRects(rects => rects.map((r, i) => (i === idx ? newRect : r)))
+    function handleRectChange(id: string, newRect: Rect) {
+        let updatedRects = cropRects.map(r => (r.id === id ? newRect : r))
+
+        updatedRects = updatedRects.sort(sortRects)
+
+        setCropRects(updatedRects)
+
+        const chunkMap = new Map(chunks.map(c => [c.id, c]))
+        const sortedChunks = updatedRects.map(r => chunkMap.get(r.id)!).filter(Boolean)
+        onChange(sortedChunks)
     }
 
     function handleDeleteRect(e: React.MouseEvent<HTMLButtonElement>, id: string) {
@@ -178,7 +195,9 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
                 })
                 .flat()
 
-            setCropRects(prev => [...prev, ...rects])
+            const finalRects = [...cropRects, ...rects].sort(sortRects)
+            setCropRects(finalRects)
+
             onChange([
                 ...chunks,
                 ...rects.map(rect => ({
@@ -220,16 +239,16 @@ const ConstructionCreator = forwardRef<ConstructionCreatorRef, Props>(function C
                     {papers.map((url, idx) => (
                         <ImageRenderer key={idx} src={url} data-paper className='w-full' alt='paper' />
                     ))}
-                    {cropRects.map((rect, idx) => (
+                    {cropRects.map(rect => (
                         <ConstructionRect
-                            key={idx}
+                            key={rect.id}
                             className={cn(
                                 'group transition-colors hover:bg-main/30',
                                 selectedChunk?.id === rect.id && 'bg-main/30',
                             )}
                             parentElement={containerRef}
                             rect={rect}
-                            onChange={newRect => handleRectChange(idx, newRect)}
+                            onChange={newRect => handleRectChange(rect.id, newRect)}
                             onClick={() => onSelect(rect.id)}
                         >
                             <div className='absolute right-2 bottom-2 hidden group-hover:flex'>
