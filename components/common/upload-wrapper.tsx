@@ -9,12 +9,16 @@ interface Props {
     multiple?: boolean
     children?: React.ReactNode
     className?: string
+    disabled?: boolean
 }
 
-export function UploadWrapper({ onFileSelect, accept = '', multiple = false, className, children }: Props) {
+export function UploadWrapper({ onFileSelect, accept = '', multiple = false, className, children, disabled }: Props) {
     const inputRef = useRef<HTMLInputElement>(null)
 
     const triggerFile = () => {
+        if (disabled) {
+            return
+        }
         if (inputRef.current) {
             inputRef.current.value = ''
         }
@@ -29,7 +33,7 @@ export function UploadWrapper({ onFileSelect, accept = '', multiple = false, cla
     }
 
     return (
-        <div onClick={triggerFile} className={cn('cursor-pointer', className)}>
+        <div onClick={triggerFile} className={cn('cursor-pointer', disabled && 'cursor-not-allowed', className)}>
             {children || '点击上传文件'}
             <input
                 ref={inputRef}

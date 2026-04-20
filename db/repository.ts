@@ -4,6 +4,43 @@ import { ChunkData, OverviewData, PracticeData, PracticeSetData } from '@/store/
 import { db } from '.'
 import dayjs from 'dayjs'
 
+function buildPracticeRows(practiceSetId: string, practices: PracticeData[]) {
+    const practicesForDB: PracticeDataDB[] = []
+    const chunksForDB: ChunkDB[] = []
+    const contentsForDB: ChunkContentDB[] = []
+
+    for (const practice of practices) {
+        const practiceId = nanoid()
+        const chunkOrder: string[] = []
+
+        for (const chunk of practice.chunks) {
+            const chunkId = nanoid()
+            chunkOrder.push(chunkId)
+
+            chunksForDB.push({
+                id: chunkId,
+                practiceDataId: practiceId,
+                subjects: chunk.subjects,
+            })
+
+            contentsForDB.push({
+                id: chunkId,
+                source: chunk.source,
+                answer: chunk.answer,
+            })
+        }
+
+        practicesForDB.push({
+            id: practiceId,
+            practiceSetId,
+            title: practice.title,
+            chunkOrder,
+        })
+    }
+
+    return { practicesForDB, chunksForDB, contentsForDB }
+}
+
 export const Repository = {
     async createPracticeSet(title: string) {
         // 1. 为顶层 set 生成一个新 ID
@@ -109,24 +146,18 @@ export const Repository = {
      * 和 ChunkContent，并更新 PracticeSet 的 `updatedAt`。
      */
     async createPractice(practiceSetId: string, newPractice: PracticeData): Promise<void> {
-        const practicesForDB: PracticeDataDB[] = []
+        const practiceId = nanoid()
         const chunksForDB: ChunkDB[] = []
         const contentsForDB: ChunkContentDB[] = []
-
-        const practiceId = nanoid()
-
-        // 1a. 提取所有 chunk ID，保持原始顺序
         const chunkOrder = newPractice.chunks.map(chunk => chunk.id)
-
-        practicesForDB.push({
+        const practiceForDB: PracticeDataDB = {
             id: practiceId,
-            practiceSetId: practiceSetId,
+            practiceSetId,
             title: newPractice.title,
-            chunkOrder: chunkOrder,
-        })
+            chunkOrder,
+        }
 
         for (const chunk of newPractice.chunks) {
-            // ... 这部分代码保持不变 ...
             chunksForDB.push({
                 id: chunk.id,
                 practiceDataId: practiceId,
@@ -142,10 +173,12 @@ export const Repository = {
 
         // --- 2. 在事务中执行写入 ---
         await db.transaction('rw', db.practiceData, db.chunks, db.chunkContent, db.practiceSets, async () => {
-            await db.practiceData.add(practicesForDB[0])
+            await db.practiceData.add(practiceForDB)
 
-            await db.chunks.bulkAdd(chunksForDB)
-            await db.chunkContent.bulkAdd(contentsForDB)
+            if (chunksForDB.length > 0) {
+                await db.chunks.bulkAdd(chunksForDB)
+                await db.chunkContent.bulkAdd(contentsForDB)
+            }
 
             await db.practiceSets.where({ id: practiceSetId }).modify({
                 updatedAt: dayjs().format('YYYY-MM-DD'),
@@ -215,6 +248,7 @@ export const Repository = {
         // --- 准备新的子数据 ---
         const chunksForDB: ChunkDB[] = []
         const contentsForDB: ChunkContentDB[] = []
+        const chunkOrder = updatedPractice.chunks.map(chunk => chunk.id)
 
         for (const chunk of updatedPractice.chunks) {
             chunksForDB.push({
@@ -242,17 +276,45 @@ export const Repository = {
             // --- 2. 更新 PracticeData 本身 (例如 title) ---
             await db.practiceData.update(practiceId, {
                 title: updatedPractice.title,
+                chunkOrder,
             })
 
             // --- 3. 添加所有新的子数据 ---
-            await db.chunks.bulkAdd(chunksForDB)
-            await db.chunkContent.bulkAdd(contentsForDB)
+            if (chunksForDB.length > 0) {
+                await db.chunks.bulkAdd(chunksForDB)
+                await db.chunkContent.bulkAdd(contentsForDB)
+            }
 
             // --- 4. 更新 PracticeSet 的 `updatedAt` ---
             await db.practiceSets.where({ id: practiceSetId }).modify({
                 updatedAt: dayjs().format('YYYY-MM-DD'),
             })
         })
+    },
+    async importPracticeSet(data: PracticeSetData): Promise<string> {
+        const practiceSetId = nanoid()
+        const { practicesForDB, chunksForDB, contentsForDB } = buildPracticeRows(practiceSetId, data.set)
+        const setForDB: PracticeSetDB = {
+            id: practiceSetId,
+            title: data.title,
+            overview: data.overview,
+            updatedAt: data.updatedAt || dayjs().format('YYYY-MM-DD'),
+        }
+
+        await db.transaction('rw', db.practiceSets, db.practiceData, db.chunks, db.chunkContent, async () => {
+            await db.practiceSets.add(setForDB)
+
+            if (practicesForDB.length > 0) {
+                await db.practiceData.bulkAdd(practicesForDB)
+            }
+
+            if (chunksForDB.length > 0) {
+                await db.chunks.bulkAdd(chunksForDB)
+                await db.chunkContent.bulkAdd(contentsForDB)
+            }
+        })
+
+        return practiceSetId
     },
     async updatePracticeSetMeta(id: string, changes: { title?: string; overview?: OverviewData[] }): Promise<void> {
         const modifications: Partial<PracticeSetDB> = {

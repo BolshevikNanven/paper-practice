@@ -130,13 +130,12 @@ export const Persist = {
                             if (sourceFile) {
                                 newChunk.source = await sourceFile.async('blob')
                             } else {
-                                console.warn(`Source file not found in ZIP: ${zipPath}`)
-                                // 保留原始字符串路径作为错误提示
+                                throw new Error(`ZIP文件无效：缺少题目图片 "${zipPath}"。`)
                             }
                         }
 
                         // --- 还原 Answer ---
-                        if (newChunk.answer && typeof newChunk.answer.value === 'string') {
+                        if (newChunk.answer?.type === 'pic' && typeof newChunk.answer.value === 'string') {
                             const zipPath = `practiceSetdata/${newChunk.answer.value}`
                             const answerFile = zip.file(zipPath)
 
@@ -147,7 +146,7 @@ export const Persist = {
                                     value: await answerFile.async('blob'),
                                 }
                             } else {
-                                console.warn(`Answer file not found in ZIP: ${zipPath}`)
+                                throw new Error(`ZIP文件无效：缺少答案图片 "${zipPath}"。`)
                             }
                         }
 
